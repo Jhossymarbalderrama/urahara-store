@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { Card } from "./Card";
 import { Carrito } from "./Carrito";
 import "../styles/productos.css";
 
-export function Productos({ fAddCarrito }) {
-    const [productsCarrito, setProductsCarrito] = useState([]);
+export function Productos({ agregarCarrito }) {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
@@ -13,14 +11,14 @@ export function Productos({ fAddCarrito }) {
 
     {
         useEffect(() => {
-            fetch('https://api.jikan.moe/v4/manga?limit=25')
+            fetch('https://api.jikan.moe/v4/manga?limit=24')
                 .then((res) => res.json())
                 .then((json) => {
                     const mappedProductos = json.data.map((d) => ({
                         id: d.mal_id,
                         name: d.title,
                         category: d.demographics?.[0]?.name || "Sin categoría",
-                        price: (Math.random() * 100).toFixed(2),
+                        price: (Math.random() * 150).toFixed(2),
                         description: d.background.slice(0, 250) + "..." || "Sin descripción disponible",
                         image: d.images?.webp?.large_image_url || ""
                     }));
@@ -35,29 +33,16 @@ export function Productos({ fAddCarrito }) {
         }, []);
     }
 
-
-    // function addCarrito(producto, cantidad) {
-    //     for (let i = 0; i < cantidad; i++) {
-    //         setProductsCarrito(productos => [...productos, producto]);
-    //     }
-    // }
-
-
-
     if (cargando) {
         return <p>Cargando productos...</p>
     } else if (error) {
         return <p>No se pudo cargar los productos.</p>
     } else {
         return (
-            <div>
-                <div className="products-container">
-                    {productos.map((pd) => (
-                        <Card key={pd.id} producto={pd} fAddCarrito={fAddCarrito} />
-                    ))}
-                </div>
-
-                {/* <Carrito productos={productsCarrito} /> */}
+            <div className="products-container">
+                {productos.map((pd) => (
+                    <Card key={pd.id} producto={pd} agregarCarrito={agregarCarrito} />
+                ))}
             </div>
         )
     }

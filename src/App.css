@@ -1,6 +1,4 @@
 #root {
-  min-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-width: 100%;
   text-align: center;
 }

@@ -1,0 +1,49 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    overflow: hidden;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo .img {
+    height: 160px;
+    width: 160px;
+    background-image: url("../assets/image/logo.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
+    transition: 0.2s ease all;
+}
+
+.img:hover {
+    transform: scale(1.08);
+}
+
+.section-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #ffc35b;
+    background: radial-gradient(circle, #ffc35b 0%, #ffbe54 20%, #ff9e02 100%);
+}
+
+.nav-item {
+    color: #ffb135 !important;
+    font-weight: 600;
+}
+
+.nav-item:hover {
+    color: white !important;
+}
+
+.nav-item i {
+    margin-right: 5px;
+}

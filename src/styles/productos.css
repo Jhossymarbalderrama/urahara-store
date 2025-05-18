@@ -1,44 +1,91 @@
+body {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}
+
 .products-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin: 40px 0px;
 
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
-    font-weight: 400;
-
+    width: 100%;
 }
 
 .product-card {
-    background-color: rgb(24, 24, 24);
-    width: 400px;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 6px;
+    /* background-color: rgb(24, 24, 24); */
+    height: 500px;
+    width: 246.84px;
     overflow: hidden;
+    border-radius: 0.5px;
+    text-align: start;
 }
 
 
 .product-image {
-    width: 100%;
-    min-width: 300px;
-    height: 650px;
+    height: 360.625px;
+    width: 246.84px;
+    max-height: 1200px;
     transition: 0.3s ease all;
     cursor: pointer;
 }
 
 
 .product-image:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 p {
     margin: 5px 0px;
     padding: 0px;
+}
+
+.product-card h1 {}
+
+.discount {
+    color: #d82b2b;
+    font-size: 14px !important;
+    font-weight: normal;
+}
+
+.select-cant {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+.select-cant button {
+    background-color: #ff9e02;
+    min-width: 45px;
+}
+
+button {
+    border: none;
+}
+
+.btn-addCart {
+    background-color: #ff9e02;
+    width: 100%;
+    font-size: 12px;
+    height: 25px;
+}
+
+button:hover {
+    background-color: #ffba4b;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 600;
 }

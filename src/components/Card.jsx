@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../styles/productos.css";
 
-export function Card({ producto, fAddCarrito }) {
-    const [cantidad, setCantidad] = useState(0);
+export function Card({ producto, agregarCarrito }) {
+    const [cantidad, setCantidad] = useState(1);
 
     function sumCont() {
         setCantidad(cantidad + 1)
@@ -16,17 +16,19 @@ export function Card({ producto, fAddCarrito }) {
 
     return (
         <div className="product-card">
-            <h1>{producto.name}</h1>
-            <p>Tags: {producto.category}</p>
-            <p>Descripcion: {producto.description}</p>
-            <p>Precio: ${producto.price}</p>
-            <div>
+            <img className="product-image" src={producto.image}></img>
+
+            <p>{producto.name}</p>
+            {/* <p>Tags: {producto.category}</p> */}
+            {/* <p>Descripcion: {producto.description}</p> */}
+            <p className="product-price">${producto.price} <span className="discount">10% comprando 1 o más</span></p>
+
+            <div className="select-cant">
                 <button onClick={restCont}>-</button>
                 <span style={{ margin: "0 10px", color: "black" }}>{cantidad}</span>
                 <button onClick={sumCont}>+</button>
             </div>
-            <img className="product-image" src={producto.image}></img>
-            <button onClick={() => fAddCarrito(producto, cantidad)}>Agregar al carrito</button>
+            <button className="btn-addCart" onClick={() => agregarCarrito(producto, cantidad)}>Agregar al carrito</button>
         </div >
     )
 }
