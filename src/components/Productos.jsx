@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card } from "./Card";
 import { Carrito } from "./Carrito";
 import "../styles/productos.css";
+import "../styles/spinner.css"
 
 export function Productos({ agregarCarrito }) {
     const [productos, setProductos] = useState([]);
@@ -23,7 +24,10 @@ export function Productos({ agregarCarrito }) {
                         image: d.images?.webp?.large_image_url || ""
                     }));
                     setProductos(mappedProductos);
-                    setCargando(false);
+
+                    setTimeout(() => {                    
+                        setCargando(false);
+                    }, 1500);
                 })
                 .catch((error) => {
                     console.error("Error al cargar productos:", error);
@@ -34,7 +38,7 @@ export function Productos({ agregarCarrito }) {
     }
 
     if (cargando) {
-        return <p>Cargando productos...</p>
+        return <div className="container-spinner"><span class="loader">Cargando</span></div>
     } else if (error) {
         return <p>No se pudo cargar los productos.</p>
     } else {

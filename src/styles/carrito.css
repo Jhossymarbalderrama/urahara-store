@@ -42,3 +42,8 @@ p {
     margin: 5px 0px;
     padding: 0px;
 }
+
+.img-row{
+    width: 120px;
+    height: 180px;
+}

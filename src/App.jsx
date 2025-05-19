@@ -32,6 +32,10 @@ function App() {
     );
   }
 
+  function quitarCarrito(idProducto){
+    
+  }
+
 
 
   return (
