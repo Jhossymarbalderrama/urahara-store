@@ -15,7 +15,7 @@
 
 .about-title {
     font-size: 2.8rem;
-    color: #ff9e02;
+    color: #FF9E02;
     margin-bottom: 30px;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -30,10 +30,10 @@
 }
 
 .about-text strong {
-    color: #ffcc00;
+    color: #FF9E02;
 }
 
 .about-text span {
-    color: #ff9e02;
+    color: #FF9E02;
     font-weight: bold;
 }

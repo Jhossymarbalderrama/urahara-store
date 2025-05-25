@@ -7,36 +7,44 @@
     border-radius: 50%;
     height: 160px;
     width: 160px;
-    overflow: hidden;
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0px 0px 0px;
+    padding: 0;
 }
 
 .logo .img {
     height: 160px;
     width: 160px;
-    background-image: url("../assets/image/logo.jpg") !important;
+    background-image: url("../assets/image/logo.webp") !important;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
 
     transition: 0.2s ease all;
+    border-radius: 50% 50% 50% 50%;
+    background-color: #FF9E02;
+
 }
 
 .img:hover {
     transform: scale(1.08);
+    /* background-color: #ffb135; */
+    background-color: transparent;
 }
 
 .section-logo {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: #ffc35b;
-    background: radial-gradient(circle, #ffc35b 0%, #ffbe54 20%, #ff9e02 100%);
+    background: #252525;
+    /* background: radial-gradient(circle, #ffb637 0%, #fca924 20%, #ec9200 100%); */
+    background: radial-gradient(circle, #252525 0%, #1f1f1f 20%, #181818 100%);
+    padding: 10px 0px;
 }
 
 .nav-item {
-    color: #ffb135 !important;
+    color: #FF9E02 !important;
     font-weight: 600;
 }
 

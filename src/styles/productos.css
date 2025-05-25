@@ -24,14 +24,18 @@ body {
 }
 
 .product-card {
-    /* background-color: rgb(24, 24, 24); */
+    min-height: 500px;
     height: 500px;
     width: 246.84px;
     overflow: hidden;
     border-radius: 0.5px;
-    text-align: start;
+
+    display: flex;
+    flex-direction: column;
+
 }
 
+.details {}
 
 .product-image {
     height: 360.625px;
@@ -40,7 +44,6 @@ body {
     transition: 0.3s ease all;
     cursor: pointer;
 }
-
 
 .product-image:hover {
     transform: scale(1.05);
@@ -51,7 +54,8 @@ p {
     padding: 0px;
 }
 
-.product-card h1 {}
+
+.product-card .details h1 {}
 
 .discount {
     color: #d82b2b;
@@ -66,7 +70,7 @@ p {
 }
 
 .select-cant button {
-    background-color: #ff9e02;
+    background-color: #FF9E02;
     min-width: 45px;
 }
 
@@ -74,8 +78,22 @@ button {
     border: none;
 }
 
+.btn-navigate {
+    background-color: #FF9E02;
+    min-width: 140px;
+
+    margin: 0;
+    padding: 3px 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+
 .btn-addCart {
-    background-color: #ff9e02;
+    background-color: #FF9E02;
     width: 100%;
     font-size: 12px;
     height: 25px;

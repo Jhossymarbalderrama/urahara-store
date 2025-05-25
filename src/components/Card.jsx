@@ -1,34 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/productos.css";
+import { useNavigate } from "react-router-dom";
 
-export function Card({ producto, agregarCarrito }) {
-    const [cantidad, setCantidad] = useState(1);
+export function Card({ producto }) {
+    const navigate = useNavigate();
 
-    function sumCont() {
-        setCantidad(cantidad + 1)
-    }
-
-    function restCont() {
-        if (cantidad > 1) {
-            setCantidad(cantidad - 1)
-        }
+    function redirectProductDetail() {
+        navigate("/products/product-detail/" + producto.id);
     }
 
     return (
         <div className="product-card">
-            <img className="product-image" src={producto.image}></img>
-
-            <p>{producto.name}</p>
-            {/* <p>Tags: {producto.category}</p> */}
-            {/* <p>Descripcion: {producto.description}</p> */}
-            <p className="product-price">${producto.price} <span className="discount">10% comprando 1 o más</span></p>
-
-            <div className="select-cant">
-                <button onClick={restCont}>-</button>
-                <span style={{ margin: "0 10px", color: "black" }}>{cantidad}</span>
-                <button onClick={sumCont}>+</button>
+            <img className="product-image" src={producto.image} onClick={redirectProductDetail}></img>
+            <div className="details">
+                <p>{producto.name}</p>
+                <p className="product-price">${producto.price} <span className="discount">10% comprando 1 o más</span></p>
+                <button className="btn-addCart" onClick={redirectProductDetail}>Ver detalle</button>
             </div>
-            <button className="btn-addCart" onClick={() => agregarCarrito(producto, cantidad)}>Agregar al carrito</button>
         </div >
     )
 }
