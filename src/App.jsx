@@ -28,8 +28,6 @@ function App() {
       ...Array(cantidad).fill(producto)
     ]);
 
-    console.log(producto);
-
     initSweet(
       "Manga agregado al carrito",
       `El manga de ${producto.name} se agregó al carrito (${cantidad} unidades)`,
@@ -38,9 +36,24 @@ function App() {
     );
   }
 
-  // function quitarCarrito(idProducto) {
+  function quitarCarrito(idProducto) {
+    const listAux = [...productsCarrito];
+    const index = listAux.findIndex((pd) => pd.id === idProducto);
 
-  // }
+    if (index !== -1) {
+      const [manga] = listAux.splice(index, 1);
+
+      setProductsCarrito(listAux);
+
+      initSweet(
+        "Manga eliminado del carrito",
+        `El manga de ${manga.name} se quitó del carrito`,
+        "success",
+        "Aceptar"
+      );
+    }
+  }
+
 
   function loginAdmin() {
     setAdminLogin(!adminLogin);
@@ -75,7 +88,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
 
-          <Route path='/cart' element={userLogin ? <Carrito productos={productsCarrito} /> : <Navigate to={"/login"} replace />} />
+          <Route path='/cart' element={userLogin ? <Carrito productos={productsCarrito} quitarCarrito={quitarCarrito} /> : <Navigate to={"/login"} replace />} />
 
           <Route path='/login' element={<Login loginAdmin={loginAdmin} loginUser={loginUser} userLogin={userLogin} adminLogin={adminLogin} />} />
           <Route path='/administrador' element={adminLogin ? <Administrador /> : <Navigate to={"/login"} replace />} />

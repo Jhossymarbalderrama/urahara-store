@@ -3,7 +3,7 @@ import "../styles/carrito.css";
 import { Card } from "./Card";
 
 
-export function Carrito({ productos, onEliminar }) {
+export function Carrito({ productos, quitarCarrito }) {
     const total = productos.reduce((acc, prod) => acc + Number(prod.price || 0), 0);
 
     return (
@@ -23,8 +23,8 @@ export function Carrito({ productos, onEliminar }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {productos.map((pd) => (
-                                <tr key={pd.id}>
+                            {productos.map((pd, index) => (
+                                <tr key={`${pd.id}-${index}`}>
                                     <td>{pd.id}</td>
                                     <td>
                                         <img
@@ -41,7 +41,7 @@ export function Carrito({ productos, onEliminar }) {
                                     </td>
                                     <td>
                                         <button
-                                            onClick={() => onEliminar(pd.id)}
+                                            onClick={() => quitarCarrito(pd.id)}
                                             className="btn btn-link text-danger p-0"
                                             title="Eliminar"
                                         >
@@ -66,7 +66,8 @@ export function Carrito({ productos, onEliminar }) {
                 </div>
             ) : (
                 <p className="text-center text-muted">Carrito Vacío</p>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }

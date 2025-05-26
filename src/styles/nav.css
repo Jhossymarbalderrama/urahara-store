@@ -44,9 +44,14 @@
 }
 
 .nav-item {
-    color: #FF9E02 !important;
+    color: #FF9E02;
     font-weight: 600;
 }
+
+.nav-item-activate {
+    color: white;
+}
+
 
 .nav-item:hover {
     color: white !important;
