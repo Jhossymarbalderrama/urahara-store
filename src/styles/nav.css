@@ -6,31 +6,26 @@
 
     border-radius: 50%;
     height: 160px;
-    width: 160px;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px 0px 0px 0px;
-    padding: 0;
+    width: 260px;
 }
 
 .logo .img {
-    height: 160px;
-    width: 160px;
+    height: 260px;
+    width: 260px;
     background-image: url("../assets/image/logo.webp") !important;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
-
     transition: 0.2s ease all;
-    border-radius: 50% 50% 50% 50%;
-    background-color: #FF9E02;
-
 }
 
 .img:hover {
     transform: scale(1.08);
-    /* background-color: #ffb135; */
     background-color: transparent;
+}
+
+.nav-container {
+    background: linear-gradient(135deg, #252525 0%, #383838 100%);
 }
 
 .section-logo {
@@ -38,14 +33,31 @@
     display: flex;
     justify-content: center;
     background: #252525;
-    /* background: radial-gradient(circle, #ffb637 0%, #fca924 20%, #ec9200 100%); */
     background: radial-gradient(circle, #252525 0%, #1f1f1f 20%, #181818 100%);
-    padding: 10px 0px;
+    padding: 80px 0 10px 0;
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(#000000de, #00000091, #000000bd, #00000091, #000000de),
+        url("../assets/image/banner-home.webp");
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+
+    align-items: center;
 }
 
 .nav-item {
     color: #FF9E02;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+
+.logout {
+    color: #ff3d02;
 }
 
 .nav-item-activate {
@@ -53,7 +65,8 @@
 }
 
 
-.nav-item:hover {
+.nav-item:hover,
+.logout:hover {
     color: white !important;
 }
 

@@ -1,19 +1,26 @@
 .section {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 20;
     display: flex;
-    justify-content: center;
-    background-color: #FF9E02;
+    justify-content: end;
+    background-color: transparent;
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: end;
+    align-items: center;
+    gap: 30px;
     margin: 5px 5px;
 }
 
 .fa-brands {
     transition: 0.3s ease all;
     cursor: pointer;
+    font-size: 18px;
+    color: #FF9E02;
 }
 
 .fa-brands:hover {

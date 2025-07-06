@@ -78,19 +78,6 @@ button {
     border: none;
 }
 
-.btn-navigate {
-    background-color: #FF9E02;
-    min-width: 140px;
-
-    margin: 0;
-    padding: 3px 0px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-
 
 .btn-addCart {
     background-color: #FF9E02;

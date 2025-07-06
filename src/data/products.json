@@ -1,0 +1,770 @@
+[
+    {
+        "id": 1,
+        "name": "Monster",
+        "category": "Seinen",
+        "price": "71.26",
+        "description": "Monster won the Grand Prize at the third Tezuka Osamu Cultural Prize in 1999, as well as the 46th Shogakukan Manga Award in the General category in 2000. The series was published in English by VIZ Media under its VIZ Signature imprint from February 2...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/258224l.webp"
+    },
+    {
+        "id": 2,
+        "name": "Berserk",
+        "category": "Seinen",
+        "price": "11.12",
+        "description": "Berserk won the Excellence Award at the sixth Tezuka Osamu Cultural Prize in 2002. As of September 2023, over 60 million copies of the manga are in circulation. The series has been published in English by Dark Horse Comics since November 4, 2003. It ...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/157897l.webp"
+    },
+    {
+        "id": 3,
+        "name": "20th Century Boys",
+        "category": "Seinen",
+        "price": "139.57",
+        "description": "20th Century Boys won the Kodansha Manga Award in the general category in 2001, an Excellence Prize at the Japan Media Arts Festival in 2002, and the Shogakukan Manga Award in the general category in 2003. The series' combined storyline won the Grand...",
+        "image": "https://cdn.myanimelist.net/images/manga/5/260006l.webp"
+    },
+    {
+        "id": 4,
+        "name": "Yokohama Kaidashi Kikou",
+        "category": "Seinen",
+        "price": "15.84",
+        "description": "Yokohama Kaidashi Kikou won the Seiun Award for Best Manga in 2007. Three drama CDs were released in 2002. In all three, Alpha is voiced by Hekiru Shiina and Kokone by Akiko Nakagawa, both of whom voiced the same characters in the two OVA series. The...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/171813l.webp"
+    },
+    {
+        "id": 7,
+        "name": "Hajime no Ippo",
+        "category": "Shounen",
+        "price": "25.47",
+        "description": "Hajime no Ippo won the 15th Kodansha Manga Award in the Shounen category in 1991. As of July 2023, over 100 million copies of the series are in circulation. The series has been published digitally in English as Hajime no Ippo: Fighting Spirit! by Kod...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/250313l.webp"
+    },
+    {
+        "id": 8,
+        "name": "Full Moon wo Sagashite",
+        "category": "Shoujo",
+        "price": "68.29",
+        "description": "Full Moon wo Sagashite was published in English as Full Moon by VIZ Media under its Shojo Beat imprint from July 5, 2005, to October 3, 2006. It was also released in French by Glénat from December 17, 2005, to November 22, 2006; in Spanish by Grupo E...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/175970l.webp"
+    },
+    {
+        "id": 9,
+        "name": "Tsubasa: RESERVoir CHRoNiCLE",
+        "category": "Shounen",
+        "price": "145.75",
+        "description": "Tsubasa: RESERVoir CHRoNiCLE is set in the same universe as other CLAMP works, most notably xxxHOLiC. Characters in the series follow Osamu Tezuka's star system principle, in which characters with the same name and design are reused in different sett...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/272410l.webp"
+    },
+    {
+        "id": 10,
+        "name": "xxxHOLiC",
+        "category": "Seinen",
+        "price": "10.69",
+        "description": "xxxHOLiC was published in English by Del Rey Manga from April 27, 2004, to February 21, 2012. Kodansha Comics USA republished the series in omnibus volumes from March 18, 2014, to September 8, 2015, with the final two volumes being 2-in-1 while the r...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/217533l.webp"
+    },
+    {
+        "id": 11,
+        "name": "Naruto",
+        "category": "Shounen",
+        "price": "88.73",
+        "description": "Naruto has sold over 250 million copies worldwide as of 2020, making it the 4th highest-grossing manga series of all time. It was nominated for the 19th Tezuka Osamu Cultural Prize in 2014, and in the same year, Masashi Kishimoto was awarded Rookie o...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/249658l.webp"
+    },
+    {
+        "id": 12,
+        "name": "Bleach",
+        "category": "Shounen",
+        "price": "55.24",
+        "description": "Bleach has sold over 130 million copies worldwide as of 2022, making it one of the top 20 best-selling manga series of all time; North American sales have also been significant with 1.7 million copies sold in the region. In 2005, the series won the 5...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/180031l.webp"
+    },
+    {
+        "id": 13,
+        "name": "One Piece",
+        "category": "Shounen",
+        "price": "133.17",
+        "description": "One Piece is the highest-selling manga series of all time, with over 500 million copies in circulation as of 2022. Volume 67 of the series currently holds the record for highest first print run of any manga or book of all time in Japan, with 4.05 mil...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/253146l.webp"
+    },
+    {
+        "id": 14,
+        "name": "Rave",
+        "category": "Shounen",
+        "price": "26.98",
+        "description": "Rave was published in English by Tokyopop as Rave Master for 32 volumes from February 11, 2003 to February 10, 2009, until their license with Kodansha expired. Del Rey later gained the license and published the final three volumes in a single omnibus...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/255624l.webp"
+    },
+    {
+        "id": 15,
+        "name": "Mahou Sensei Negima!",
+        "category": "Shounen",
+        "price": "4.61",
+        "description": "The first 27 volumes of Mahou Sensei Negima! were published in English as Negima! by Del Rey Comics from April 27, 2004, to July 27, 2010. Kodansha Comics USA picked up the license and published volumes 28 through 38 from October 2, 2012, to April 23...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/259286l.webp"
+    },
+    {
+        "id": 16,
+        "name": "Love Hina",
+        "category": "Shounen",
+        "price": "77.81",
+        "description": "Love Hina won the 25th Kodansha Manga Award in the Shounen category in 2001. The series was published in English by Tokyopop from May 21, 2002, to September 16, 2003. Kodansha USA republished the series in 3-in-1 omnibus volumes from October 25, 2011...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/259287l.webp"
+    },
+    {
+        "id": 17,
+        "name": "Kareshi Kanojo no Jijou",
+        "category": "Shoujo",
+        "price": "0.16",
+        "description": "Kareshi Kanojo no Jijou was published in English as Kare Kano: His and Her Circumstances by TokyoPop from January 21, 2003 to January 9, 2007....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267780l.webp"
+    },
+    {
+        "id": 18,
+        "name": "Kodomo no Omocha",
+        "category": "Shoujo",
+        "price": "64.82",
+        "description": "Kodomo no Omocha won the 22nd Kodansha Manga Award in the Shoujo category in 1998. The series was published in English as Kodocha: Sana's Stage by Tokyopop from June 11, 2002, to November 11, 2003....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267715l.webp"
+    },
+    {
+        "id": 19,
+        "name": "GetBackers",
+        "category": "Shounen",
+        "price": "48.16",
+        "description": "The first 28 volumes of GetBackers were published in English by Tokyopop from February 10, 2004, to March 10, 2009, until their license with Kodansha expired....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/169369l.webp"
+    },
+    {
+        "id": 20,
+        "name": "Hikaru no Go",
+        "category": "Shounen",
+        "price": "116.93",
+        "description": "Hikaru no Go won the 45th Shogakukan Manga Award in the Shounen category in 2000. The series also won the Creative Award at the seventh Tezuka Osamu Cultural Prize in 2003. The series was published in English by VIZ Media under the Shonen Jump imprin...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/170574l.webp"
+    },
+    {
+        "id": 21,
+        "name": "Death Note",
+        "category": "Shounen",
+        "price": "12.41",
+        "description": "Death Note ranked second in the 2006 and 2007 Kono Manga ga Sugoi! for the Male Readers division. It was nominated for the 38th Seiun Award in the Best Comic category in 2007. In the same year, it was also nominated for the 11th Tezuka Osamu Cultural...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/258245l.webp"
+    },
+    {
+        "id": 22,
+        "name": "Rurouni Kenshin: Meiji Kenkaku Romantan",
+        "category": "Shounen",
+        "price": "136.01",
+        "description": "As of December 2019, over 72 million copies of Rurouni Kenshin: Meiji Kenkaku Romantan are in circulation. The series was published in English as Rurouni Kenshin by VIZ Media under the Shonen Jump imprint from December 23, 2003, to July 5, 2006, and ...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/127583l.webp"
+    },
+    {
+        "id": 23,
+        "name": "Ranma ½",
+        "category": "Shounen",
+        "price": "103.93",
+        "description": "Ranma ½ was published in English by VIZ Media from May 1993 to November 16, 2006. It was VIZ's longest-running manga at the release of its final volume. It was republished in 2-in-1 omnibus volumes in the original right-to-left format by VIZ Media un...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/156534l.webp"
+    },
+    {
+        "id": 24,
+        "name": "D.Gray-man",
+        "category": "Shounen",
+        "price": "28.40",
+        "description": "D.Gray-man has been published in English by VIZ Media under the Shonen Jump Advanced imprint since May 2, 2006 and in 3-in-1 omnibus editions since July 2, 2013. It has been also published in Spanish, first the first 23 volumes by Glénat until August...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/240470l.webp"
+    },
+    {
+        "id": 25,
+        "name": "Fullmetal Alchemist",
+        "category": "Shounen",
+        "price": "84.27",
+        "description": "Fullmetal Alchemist won the 49th Shogakukan Manga Award in the Shounen category in 2003, along with Yakitate!! Japan. Hiromu Arakawa also won the 15th Tezuka Osamu Cultural Prize in the New Artist Prize category for the series in 2011. In the same ye...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/243675l.webp"
+    },
+    {
+        "id": 26,
+        "name": "Hunter x Hunter",
+        "category": "Shounen",
+        "price": "53.20",
+        "description": "As of July 2022, over 84 million copies of Hunter x Hunter have been sold worldwide. The series has been published in English by VIZ Media under the Shonen Jump Advanced imprint since April 5, 2005, and as 3-in-1 omnibus volumes since February 18, 20...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/253119l.webp"
+    },
+    {
+        "id": 27,
+        "name": "X",
+        "category": "Shoujo",
+        "price": "138.31",
+        "description": "X is written and illustrated by the four-person team of CLAMP. It is currently incomplete, but CLAMP has stated their intention to conclude the series one day, if possible. It started serialization in Kadokawa Shoten's Monthly Asuka shoujo manga maga...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/267781l.webp"
+    },
+    {
+        "id": 28,
+        "name": "Nana",
+        "category": "Shoujo",
+        "price": "74.69",
+        "description": "Nana won the 48th Shogakukan Manga Award in the Shoujo category in 2002, along with Kaze Hikaru. The series was placed on hiatus since the July 2009 issue of Cookie due to the mangaka's sudden illness. The series has been published in English by VIZ ...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/262324l.webp"
+    },
+    {
+        "id": 29,
+        "name": "Paradise Kiss",
+        "category": "Josei",
+        "price": "139.67",
+        "description": "Paradise Kiss was published in English by Tokyopop from May 21, 2002 to March 9, 2004. Due to Tokyopop dissolving in 2011, Vertical Inc. acquired the publishing rights and republished the entire series in three volumes from September 25, 2012 to Marc...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/262323l.webp"
+    },
+    {
+        "id": 30,
+        "name": "Ouran Koukou Host Club",
+        "category": "Shoujo",
+        "price": "126.22",
+        "description": "Ouran Koukou Host Club was published in English as Ouran High School Host Club by VIZ Media under the Shojo Beat imprint from July 5, 2005, to June 5, 2012. An 18-volume boxed set including an exclusive notepad featuring the character's art was later...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267782l.webp"
+    },
+    {
+        "id": 31,
+        "name": "Lovely★Complex",
+        "category": "Shoujo",
+        "price": "125.91",
+        "description": "Lovely★Complex won the 49th Shogakukan Manga Award for shoujo in 2004. The manga was published in English as Love★Com by VIZ Media under the Shojo Beat imprint from July 3, 2007 to March 2, 2010 and was adapted to two drama CDs, a live-action movie a...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/209659l.webp"
+    },
+    {
+        "id": 32,
+        "name": "666 Satan",
+        "category": "Shounen",
+        "price": "37.32",
+        "description": "666 Satan was published in English as O-Parts Hunter by VIZ Media from December 12, 2006 to December 8, 2009; in Italian by J-POP from June 6, 2008 to July 25, 2010; and in Spanish by EDT/Glénat from July 2009 to June 2012....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267783l.webp"
+    },
+    {
+        "id": 33,
+        "name": "Pita-Ten",
+        "category": "Shounen",
+        "price": "7.11",
+        "description": "Pita-Ten was published in English by Tokypop from January 13, 2004 to March 8, 2005....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/191236l.webp"
+    },
+    {
+        "id": 34,
+        "name": "Di Gi Charat: Koushiki Comic Anthology",
+        "category": "Shounen",
+        "price": "73.68",
+        "description": "Di Gi Charat: Koushiki Comic Anthology was published in English as Di Gi Charatf by VIZ Media from December 24, 2003 to April 28, 2004....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267784l.webp"
+    },
+    {
+        "id": 35,
+        "name": "Kamichama Karin",
+        "category": "Shoujo",
+        "price": "66.87",
+        "description": "Kamichama Karin was published in English by Tokyopop from September 30, 2005, to May 1, 2007. Del Rey later took over the license, and published the series from June 24, 2008, to January 26, 2010....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/267789l.webp"
+    },
+    {
+        "id": 36,
+        "name": "Kamikaze Kaitou Jeanne",
+        "category": "Shoujo",
+        "price": "102.21",
+        "description": "Kamikaze Kaitou Jeanne was published in English by CMX Manga from November 1, 2005 to January 24, 2007. After the publisher went defunct, VIZ Media picked up the license and republished the series from March 4, 2014 to November 4, 2014, following the...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/267790l.webp"
+    },
+    {
+        "id": 37,
+        "name": "Shinshi Doumei Cross",
+        "category": "Shoujo",
+        "price": "127.30",
+        "description": "Shinshi Doumei Cross was published in English as The Gentlemen's Alliance Cross by VIZ Media under the Shojo Beat imprint from March 6, 2007 to April 6, 2010....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/257940l.webp"
+    },
+    {
+        "id": 38,
+        "name": "+Anima",
+        "category": "Shounen",
+        "price": "9.52",
+        "description": "+Anima was licensed by Tokyopop in the United States and Canada, publishing an English translation of the series from May 9, 2006 to December 9, 2008. Madman Entertainment licensed the manga in Australia and New Zealand....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/267791l.webp"
+    },
+    {
+        "id": 39,
+        "name": "Zombie Powder.",
+        "category": "Shounen",
+        "price": "47.29",
+        "description": "Zombie Powder. was published in English by VIZ Media under the Shonen Jump imprint from September 5, 2006 to June 5, 2007....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/180035l.webp"
+    },
+    {
+        "id": 40,
+        "name": "Black Cat",
+        "category": "Shounen",
+        "price": "4.46",
+        "description": "Black Cat was published in English by VIZ Media under the Shonen Jump imprint from March 7, 2006 to May 5, 2009 and in Italian by Star Comics from February 3, 2004 to April 2, 2007....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/186071l.webp"
+    },
+    {
+        "id": 41,
+        "name": "Busou Renkin",
+        "category": "Shounen",
+        "price": "113.90",
+        "description": "Busou Renkin was published in English as Buso Renkin by VIZ Media under the Shonen Jump imprint from August 1, 2006, to February 5, 2008. It was also released in Brazilian Portuguese by Editora JBC from July 2010 to May 2011....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/149583l.webp"
+    },
+    {
+        "id": 42,
+        "name": "Dragon Ball",
+        "category": "Shounen",
+        "price": "115.82",
+        "description": "Dragon Ball has become one of the most successful manga series of all time. With over 260 million copies sold worldwide, the series is the fourth best-selling manga of all time as of 2024. It is often credited for the \"Golden Age of Jump,\" where the ...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267793l.webp"
+    },
+    {
+        "id": 43,
+        "name": "Eyeshield 21",
+        "category": "Shounen",
+        "price": "11.17",
+        "description": "Eyeshield 21 has sold more than 20 million copies in Japan and also has games produced by Konami and Nintendo. The series was published in English by VIZ Media under Shonen Jump Advanced imprint from April 5, 2005 to October 4, 2011 and has been lice...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/165586l.webp"
+    },
+    {
+        "id": 44,
+        "name": "Gintama",
+        "category": "Shounen",
+        "price": "22.64",
+        "description": "Gintama was nominated for Best Manga under the comedy category at the Society for the Promotion of Japanese Animation in 2008. As of December 2023, over 58 million copies of the manga are in circulation. VIZ Media published the first 23 volumes of th...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267795l.webp"
+    },
+    {
+        "id": 45,
+        "name": "Ichigo 100%",
+        "category": "Shounen",
+        "price": "91.47",
+        "description": "Ichigo 100% was published in English as Strawberry 100% by VIZ Media under its Shonen Jump Advanced imprint from July 3, 2007, to October 5, 2010, up to the 14th volume. To promote the publication of manga in Germany, the series was released in Germa...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/259714l.webp"
+    },
+    {
+        "id": 46,
+        "name": "Kannade",
+        "category": "Shounen",
+        "price": "25.69",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267796l.webp"
+    },
+    {
+        "id": 47,
+        "name": "Katekyou Hitman Reborn!",
+        "category": "Shounen",
+        "price": "27.04",
+        "description": "The first 16 volumes of Katekyou Hitman Reborn! were published in English as Reborn! by VIZ Media under the Shonen Jump Advanced imprint from October 3, 2006, to July 6, 2010, before release was discontinued. It was also published in Brazilian Portug...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/253085l.webp"
+    },
+    {
+        "id": 48,
+        "name": "Pretty Face",
+        "category": "Shounen",
+        "price": "66.49",
+        "description": "Pretty Face was published in English by VIZ Media under the Shonen Jump imprint in print from August 7, 2007 to June 3, 2008, and digitally from June 11, 2013 to September 24, 2013....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/123699l.webp"
+    },
+    {
+        "id": 49,
+        "name": "Tennis no Oujisama",
+        "category": "Shounen",
+        "price": "94.78",
+        "description": "Tennis no Oujisama serialized in the Weekly Shounen Jump from July 1999 to March 2008. The series was put on hiatus in July 2006 after the writer, Takeshi Konomi, was injured in an accident; publication resumed in September 2006. The series was publi...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/153238l.webp"
+    },
+    {
+        "id": 50,
+        "name": "Shaman King",
+        "category": "Shounen",
+        "price": "12.24",
+        "description": "Shaman King was published in English by VIZ Media under the Shonen Jump imprint from August 6, 2003, to January 4, 2011. Kodansha USA republished the series digitally in 35 volumes on October 6, 2020. It was also released in Brazilian Portuguese by E...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/255376l.webp"
+    },
+    {
+        "id": 51,
+        "name": "Slam Dunk",
+        "category": "Shounen",
+        "price": "149.15",
+        "description": "Slam Dunk won the 40th Shogakukan Manga Award in the Shounen category in 1994. As of 2017, over 170 million copies of the series are in circulation. The manga's wide success led to a large increase in the popularity of basketball among Japanese youth...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/258749l.webp"
+    },
+    {
+        "id": 52,
+        "name": "Whistle!",
+        "category": "Shounen",
+        "price": "20.04",
+        "description": "Whistle! was published in English by VIZ Media under the Shonen Jump imprint from October 12, 2004 to January 5, 2010....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267799l.webp"
+    },
+    {
+        "id": 53,
+        "name": "Yuu☆Yuu☆Hakusho",
+        "category": "Shounen",
+        "price": "28.32",
+        "description": "Yuu☆Yuu☆Hakusho won the 39th Shogakukan Manga Award in the Shounen category in 1993. The series was published in English as Yu Yu Hakusho by VIZ Media under the Shonen Jump imprint from August 18, 2003, to March 2, 2010. It was also released in Spani...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/250027l.webp"
+    },
+    {
+        "id": 54,
+        "name": "Yu☆Gi☆Oh!",
+        "category": "Shounen",
+        "price": "20.13",
+        "description": "Yu☆Gi☆Oh! spawned Yu☆Gi☆Oh! Bandai Official Card Game in 1998 and the Konami Official Card Game in 1999. While the Bandai version was popular during its initial release in Japan, the Konami version became one of the most popular card games in the wor...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/262097l.webp"
+    },
+    {
+        "id": 55,
+        "name": "Aishiteruze Baby★★",
+        "category": "Shoujo",
+        "price": "68.93",
+        "description": "Aishiteruze Baby★★ was published in English by VIZ Media under the Shojo Beat imprint from April 4, 2006 to April 3, 2007....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/166559l.webp"
+    },
+    {
+        "id": 56,
+        "name": "Caramel Diary",
+        "category": "Shoujo",
+        "price": "140.08",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/261021l.webp"
+    },
+    {
+        "id": 57,
+        "name": "Hanazakari no Kimitachi e",
+        "category": "Shoujo",
+        "price": "13.96",
+        "description": "Hanazakari no Kimitachi e was published in English as Hana-Kimi: For You in Full Bloom by VIZ Media under the Shojo Beat imprint from September 7, 2004, to April 15, 2008. The publisher later re-released the manga as 3-in-1 omnibus volumes, wherein t...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/262555l.webp"
+    },
+    {
+        "id": 58,
+        "name": "W-Juliet",
+        "category": "Shoujo",
+        "price": "127.26",
+        "description": "W-Juliet was published in English by VIZ Media under the Shojo Beat imprint from November 10, 2004 to January 9, 2007. A digital edition was released from September 17, 2013 to March 18, 2014....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/256786l.webp"
+    },
+    {
+        "id": 59,
+        "name": "√W.P.B.",
+        "category": "Shounen",
+        "price": "125.30",
+        "description": "√W.P.B. was republished in a new format by Kadokawa under Asuka Comics CL-DX imprint on May 1, 2015. The original volumes were published by Square Enix under GFantasy Comics imprint....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/169856l.webp"
+    },
+    {
+        "id": 60,
+        "name": "π",
+        "category": "Seinen",
+        "price": "11.14",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267899l.webp"
+    },
+    {
+        "id": 61,
+        "name": "Seito no Shucho Kyoushi no Honbun",
+        "category": "Sin categoría",
+        "price": "116.66",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/267900l.webp"
+    },
+    {
+        "id": 62,
+        "name": "± Junkie",
+        "category": "Shoujo",
+        "price": "125.20",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/112127l.webp"
+    },
+    {
+        "id": 63,
+        "name": "\"Aruto\" no \"A\"",
+        "category": "Shoujo",
+        "price": "46.65",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/164540l.webp"
+    },
+    {
+        "id": 64,
+        "name": "13 Nichi wa Kinyoubi?",
+        "category": "Shoujo",
+        "price": "94.71",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/83691l.webp"
+    },
+    {
+        "id": 65,
+        "name": "17-sai: Hajimete no H",
+        "category": "Shoujo",
+        "price": "103.84",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267903l.webp"
+    },
+    {
+        "id": 66,
+        "name": "Ninin ga Shinobuden",
+        "category": "Shounen",
+        "price": "8.21",
+        "description": "Ninin ga Shinobuden was published in English by Infinity Studios from March 2006 to 2008....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/143955l.webp"
+    },
+    {
+        "id": 67,
+        "name": "2001-ya Monogatari",
+        "category": "Seinen",
+        "price": "67.82",
+        "description": "2001 Ya Monogatari was published in English as 2001 Nights by VIZ Media, first in comic book format, for a total of 10 issues, from July 1990 to May 1991, and later in tankoubon format, in 1996....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267904l.webp"
+    },
+    {
+        "id": 68,
+        "name": "3.3.7 Byooshi!!",
+        "category": "Shounen",
+        "price": "83.28",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267905l.webp"
+    },
+    {
+        "id": 69,
+        "name": "\"Suki\" to Ienai.",
+        "category": "Shoujo",
+        "price": "125.61",
+        "description": "...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/267906l.webp"
+    },
+    {
+        "id": 70,
+        "name": "Übel Blatt",
+        "category": "Seinen",
+        "price": "2.71",
+        "description": "Übel Blatt was serialized in Young Gangan magazine until the 22nd, 2009 issue, after which it took a short hiatus and restarted in Big Gangan magazine in 2011. The series was published in English by Yen Press as 2-in-1 omnibus volumes from October 28...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/55347l.webp"
+    },
+    {
+        "id": 71,
+        "name": "Zettai Kareshi.",
+        "category": "Shoujo",
+        "price": "113.57",
+        "description": "Released in North America under the title Absolute Boyfriend, Zettai Kareshi. has spawned several live-action adaptations. A Japanese drama series, Zettai Kareshi: Kanzen Muketsu no Koibito Robot, aired in 2008; a Taiwanese drama series, Jue Dui Darl...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/185981l.webp"
+    },
+    {
+        "id": 72,
+        "name": "Abenobashi Mahou☆Shoutengai",
+        "category": "Seinen",
+        "price": "52.37",
+        "description": "Abenobashi Mahou☆Shoutengai is based on and original TV anime series of the same title. The series was published in English as Abenobashi: Magical Shopping Arcade by TokyoPop from October 10 to November 9, 2004....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/267907l.webp"
+    },
+    {
+        "id": 73,
+        "name": "Tenjou Tenge",
+        "category": "Seinen",
+        "price": "26.96",
+        "description": "The first 18 volumes of Tenjou Tenge were published in English as Tenjho Tenge by DC Comics under the CMX imprint from March 1, 2005, to September 8, 2009, before the publisher went defunct. The CMX release came under heavy criticism from fans for ed...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267909l.webp"
+    },
+    {
+        "id": 74,
+        "name": "Air Gear",
+        "category": "Shounen",
+        "price": "61.41",
+        "description": "Air Gear was first published in English by Del Rey Manga who released the first 17 volumes in the period from July 25, 2006 to August 31, 2010, with the latter three volumes released as a 3-in-1 omnibus. Kodansha Comic USA published the series starti...",
+        "image": "https://cdn.myanimelist.net/images/manga/1/167489l.webp"
+    },
+    {
+        "id": 75,
+        "name": "Ai yori Aoshi",
+        "category": "Seinen",
+        "price": "34.66",
+        "description": "Ai yori Aoshi was published in English by Tokyopop from January 6, 2004 to October 9, 2007. The company later released a 3-in-1 omnibus for the manga's first three volumes in English on November 4, 2008. It was also published in Italian from March 11...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/184631l.webp"
+    },
+    {
+        "id": 76,
+        "name": "Akachan to Boku",
+        "category": "Shoujo",
+        "price": "32.94",
+        "description": "Aka-chan to Boku was published in English as Baby & Me by VIZ Media under the Shojo Beat imprint from February 7, 2006 to February 2, 2010....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/179184l.webp"
+    },
+    {
+        "id": 77,
+        "name": "Alice 19th",
+        "category": "Shoujo",
+        "price": "71.27",
+        "description": "Alice 19th was published in English by VIZ Media under the Shojo Beat imprint from October 1, 2003, to November 24, 2004. It was also published in Spanish by Glénat España from April 2004 to December 2004....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/258981l.webp"
+    },
+    {
+        "id": 78,
+        "name": "Alichino",
+        "category": "Shoujo",
+        "price": "17.68",
+        "description": "Alichino was published in English by Tokyopop from February 8, 2005 to September 13, 2005....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267910l.webp"
+    },
+    {
+        "id": 79,
+        "name": "Sora wa Akai Kawa no Hotori",
+        "category": "Shoujo",
+        "price": "123.85",
+        "description": "Sora wa Akai Kawa no Hotori won the 46th Shogakukan Manga Award in the Shoujo category in 2000. The series was published in English as Red River by VIZ Media under the Shojo Beat imprint from May 26, 2004, to January 12, 2010, and as 3-in-1 omnibus v...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/260695l.webp"
+    },
+    {
+        "id": 80,
+        "name": "Angelic Layer",
+        "category": "Shounen",
+        "price": "93.10",
+        "description": "Angelic Layer was published in English by Tokyopop from June 25, 2002, to March 11, 2003. Dark Horse Comics later released the series as two-in-one omnibus volumes from September 19, 2012, and March 27, 2013. It was also published in Spanish by Edito...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/179060l.webp"
+    },
+    {
+        "id": 81,
+        "name": "Aria",
+        "category": "Shounen",
+        "price": "110.75",
+        "description": "Aria was published in English by ADV Manga, releasing the first three volumes from April 1, 2004, to November 1, 2004, before dropping the license. Tokyopop published the first six volumes from January 8, 2008, to December 28, 2010, before publicatio...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/202644l.webp"
+    },
+    {
+        "id": 83,
+        "name": "Ayashi no Ceres",
+        "category": "Shoujo",
+        "price": "90.11",
+        "description": "Ayashi no Ceres was published in English as Ceres: Celestial Legend by VIZ Media from October 1, 2003 to February 14, 2006....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/160959l.webp"
+    },
+    {
+        "id": 84,
+        "name": "Fushigi Yuugi",
+        "category": "Shoujo",
+        "price": "29.85",
+        "description": "Fushigi Yuugi was published in English by VIZ Media from December 10, 2003 to April 11, 2006. A 3-in-1 omnibus edition was released under the Shojo Beat VIZBIG imprint from January 20, 2009 to June 15, 2010....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267911l.webp"
+    },
+    {
+        "id": 85,
+        "name": "Azumanga Daioh",
+        "category": "Sin categoría",
+        "price": "101.83",
+        "description": "Azumanga Daioh was published in English by ADV Manga from September 16, 2003, to April 6, 2004, and in a complete omnibus on November 20, 2007. Yen Press republished the series as a complete omnibus with new translations on December 15, 2009. It was ...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/259651l.webp"
+    },
+    {
+        "id": 86,
+        "name": "Time Stranger Kyoko",
+        "category": "Shoujo",
+        "price": "3.15",
+        "description": "Time Stranger Kyoko was published in English by VIZ Media under the Shojo Beat imprint from July 1, 2008 to January 6, 2009....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/175908l.webp"
+    },
+    {
+        "id": 87,
+        "name": "Tactics",
+        "category": "Shoujo",
+        "price": "1.83",
+        "description": "Tactics had eight volumes published in English by Tokyopop, from April 3, 2007 to December 29, 2009, before the publisher became defunct. Previous to that, ADV Manga had published the first two volumes, from October 26, 2004 to May 1, 2005, before th...",
+        "image": "https://cdn.myanimelist.net/images/manga/3/158123l.webp"
+    },
+    {
+        "id": 88,
+        "name": "Angel/Dust",
+        "category": "Sin categoría",
+        "price": "42.96",
+        "description": "Angel/Dust was published by ADV Manga on November 22, 2005 and prior to the release also serialized in Newtype USA magazine....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/179773l.webp"
+    },
+    {
+        "id": 89,
+        "name": "Gals!",
+        "category": "Shoujo",
+        "price": "30.66",
+        "description": "Gals! was published in English by CMX Manga from April 1, 2005 to April 25, 2007....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267912l.webp"
+    },
+    {
+        "id": 90,
+        "name": "Loveless",
+        "category": "Josei",
+        "price": "89.05",
+        "description": "Loveless was published in English by Tokyopop for 8 volumes from February 7, 2006 to September 1, 2008 until becoming defunct; VIZ Media later gained rights to the series and began publishing since September 11, 2012. The series has also been publish...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/171051l.webp"
+    },
+    {
+        "id": 91,
+        "name": "Marmalade Boy",
+        "category": "Shoujo",
+        "price": "83.56",
+        "description": "Marmalade Boy was published in English by Tokyopop from April 23, 2002 to August 5, 2003. It has also been published by Seven Seas Entertainment since February 14, 2023....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/262987l.webp"
+    },
+    {
+        "id": 92,
+        "name": "Bishoujo Senshi Sailor Moon",
+        "category": "Shoujo",
+        "price": "131.40",
+        "description": "Bishoujo Senshi Sailor Moon won the 17th Kodansha Manga Award in the Shoujo category in 1993. The series has received critical acclaim, being credited with redefining the magical girl genre. As of 2022, over 46 million copies of the manga are in circ...",
+        "image": "https://cdn.myanimelist.net/images/manga/4/260613l.webp"
+    },
+    {
+        "id": 93,
+        "name": "Megami Kouhosei",
+        "category": "Seinen",
+        "price": "129.97",
+        "description": "Megami Kouhosei was published in English as Candidate for Goddess by Tokyopop from April 13, 2004 to June 15, 2006....",
+        "image": "https://cdn.myanimelist.net/images/manga/1/180628l.webp"
+    },
+    {
+        "id": 94,
+        "name": "D.N.Angel",
+        "category": "Shoujo",
+        "price": "56.72",
+        "description": "D.N.Angel was first published in English by Tokyopop, who released the first 13 volumes from April 6, 2004 to December 8, 2009 before the closure of their North American division. VIZ Media digitally republished the Tokyopop volumes under the VIZ Sel...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/145023l.webp"
+    },
+    {
+        "id": 95,
+        "name": "Lagoon Engine",
+        "category": "Shoujo",
+        "price": "129.60",
+        "description": "Lagoon Engine was first published by Tokyopop from May 15, 2006 to December 14, 2010. VIZ Media since took over the license, and published the series digitally from July 22, 2014 to January 20, 2015....",
+        "image": "https://cdn.myanimelist.net/images/manga/2/179821l.webp"
+    },
+    {
+        "id": 96,
+        "name": "Lagoon Engine Einsatz",
+        "category": "Sin categoría",
+        "price": "34.06",
+        "description": "Lagoon Engine Einsatz was serialized in the special English edition of the Japanese Newtype's magazine published in the North America, Newtype USA, but it was discontinued after only ten chapters. Serialization in the Japanese magazine started with a...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/179820l.webp"
+    },
+    {
+        "id": 97,
+        "name": "DearS",
+        "category": "Shounen",
+        "price": "99.85",
+        "description": "DearS was published in English by Tokyopop from January 11, 2005 to November 7, 2006....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/265668l.webp"
+    },
+    {
+        "id": 98,
+        "name": "Rozen Maiden",
+        "category": "Seinen",
+        "price": "25.75",
+        "description": "Rozen Maiden was put hiatus after the sudden illness and hospitalization of the Peach-Pit duo and subsequently cancelled by Gentosha. It was then picked up by Shueisha as an alternative setting story. Rozen Maiden was published in English by Tokyopop...",
+        "image": "https://cdn.myanimelist.net/images/manga/2/271890l.webp"
+    },
+    {
+        "id": 99,
+        "name": "Zombie-Loan",
+        "category": "Shounen",
+        "price": "134.92",
+        "description": "Zombie-Loan was published in English by Yen Press from October 17, 2007 to January 24, 2012....",
+        "image": "https://cdn.myanimelist.net/images/manga/3/267914l.webp"
+    }
+]

@@ -10,7 +10,7 @@ import { Banners } from "../components/Banners"
 export function Home({ agregarCarrito }) {
     return (
         <div>
-            <Banners />
+            {/* <Banners /> */}
             <Productos agregarCarrito={agregarCarrito} />
         </div>
     )

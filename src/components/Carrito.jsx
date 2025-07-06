@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/carrito.css";
 import { Card } from "./Card";
+import { CarritoContext } from "../contexts/CarritoContext";
 
 
-export function Carrito({ productos, quitarCarrito }) {
-    const total = productos.reduce((acc, prod) => acc + Number(prod.price || 0), 0);
+export function Carrito() {
+    const { productsCarrito, quitarCarrito, vaciarCarrito } = useContext(CarritoContext);
+    const total = productsCarrito.reduce((acc, prod) => acc + Number(prod.price || 0), 0);
 
     return (
         <div className="px-4 m-4 mt-4">
-            {productos.length > 0 ? (
+            <button className="my-2" onClick={() => vaciarCarrito()}>Vaciar carrito</button>
+            {productsCarrito.length > 0 ? (
                 <div className="table-responsive">
                     <table className="table table-bordered align-middle">
                         <thead className="table-light">
@@ -23,7 +26,7 @@ export function Carrito({ productos, quitarCarrito }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {productos.map((pd, index) => (
+                            {productsCarrito.map((pd, index) => (
                                 <tr key={`${pd.id}-${index}`}>
                                     <td>{pd.id}</td>
                                     <td>

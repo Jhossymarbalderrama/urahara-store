@@ -6,12 +6,13 @@
 
 .banner {
     background-image:
-        linear-gradient(#000000d0, #00000077, #00000077, #00000077, #000000d0),
+        linear-gradient(#000000de, #00000091, #000000bd, #00000091, #000000de),
         url("../assets/image/banner-home.webp");
     height: 100%;
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
-
+    background-attachment: scroll;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,22 +27,23 @@
 
 .banner-content {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .title {
     color: #FF9E02;
     font-size: 3.5rem;
-    font-weight: bold;
     text-shadow: 2px 2px 10px black;
-    letter-spacing: 5px;
+    letter-spacing: 10px;
     text-transform: uppercase;
 }
 
 .subtitle {
     margin-top: 10px;
-    font-size: 1.2rem;
-    color: #ffb13d;
+    font-size: 1.3rem;
+    color: #ffae2d;
     text-shadow: 1px 1px 5px black;
-    font-weight: 500;
-    letter-spacing: 3px;
+    letter-spacing: 6px;
 }

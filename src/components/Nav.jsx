@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import "../styles/nav.css"
-
+import { useAuthContext } from "../contexts/AuthContext";
 
 export function Nav({ productsCarrito }) {
+    const { isLogin } = useAuthContext();
 
     const navigate = useNavigate();
 
@@ -20,8 +21,8 @@ export function Nav({ productsCarrito }) {
                 </div>
             </div>
 
-            <nav style={{ backgroundColor: "#181818", padding: "10px 7rem" }}>
-                <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-between", margin: 0 }}>
+            <nav style={{ padding: "20px 5rem" }} className="nav-container">
+                <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-between", margin: 0, fontSize: "16px", alignItems: "center" }}>
 
                     <li className="d-flex flex-row justify-content-center gap-5">
                         <NavLink to="/" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>Home</NavLink>
@@ -31,10 +32,21 @@ export function Nav({ productsCarrito }) {
                     </li>
 
                     <li className="d-flex flex-row justify-content-center gap-3">
-                        <NavLink to="/login" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>Login</NavLink>
-                        <div className="text-white">|</div>
+
+
+                        <NavLink to="/login" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            style={{ textDecoration: "none" }}>
+                            <div className={isLogin() ? "logout" : ""}>
+                                {isLogin() ? "Logout" : "Login"}
+                            </div>
+                        </NavLink>
+
+                        <div className="text-white fw-bold">|</div>
+
                         <NavLink to="/administrador" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}> Admin</NavLink>
-                        <div className="text-white">|</div>
+
+                        <div className="text-white fw-bold">|</div>
+
                         <NavLink to="/cart" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>
                             <i className="fa-solid fa-cart-shopping"></i>
                             <span>{productsCarrito.length > 0 ? productsCarrito.length : 0}</span>
@@ -42,6 +54,6 @@ export function Nav({ productsCarrito }) {
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div >
     )
 }
