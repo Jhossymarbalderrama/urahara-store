@@ -48,8 +48,8 @@ export function Productos({ agregarCarrito }) {
                 <div>
                     <Navegacion />
                     <div className="products-container">
-                        {productos.map((pd) => (
-                            <Card key={pd.id} producto={pd} agregarCarrito={agregarCarrito} />
+                        {productos.map((pd, index) => (
+                            <Card key={`${pd.id}-${index}`} producto={pd} agregarCarrito={agregarCarrito} />
                         ))}
                     </div>
                     <Navegacion />
