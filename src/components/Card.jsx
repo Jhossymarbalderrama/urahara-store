@@ -14,7 +14,10 @@ export function Card({ producto }) {
             <img className="product-image" src={producto.image} onClick={redirectProductDetail}></img>
             <div className="details">
                 <p>{producto.name}</p>
-                <p className="product-price">${producto.price} <span className="discount">10% comprando 1 o más</span></p>
+                <div>
+                    <p className="product-price">${producto.price}</p>
+                    <p><span className="discount">10% comprando 1 o más</span></p>
+                </div>
                 <button className="btn-addCart" onClick={redirectProductDetail}>Ver detalle</button>
             </div>
         </div >

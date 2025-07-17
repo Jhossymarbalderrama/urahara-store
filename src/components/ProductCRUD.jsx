@@ -10,12 +10,15 @@ export function ProductCrud() {
 
     const contextValue = useProductosContext();
     const {
-        productos,
+        productosPaginados,        // Cambiado de 'productos' a 'productosPaginados'
+        totalProductos,           // Total de productos
         productsNavigatePrev,
         productsNavigateNext,
+        irAPagina,
+        paginaActual,
+        totalPaginas,
         cargando,
         error,
-        setApiPage,
         eliminarProducto,
         modificarProducto
     } = contextValue;
@@ -56,6 +59,64 @@ export function ProductCrud() {
         }));
     };
 
+    // Función para generar números de página (reutilizada del otro componente)
+    const generarNumerosPagina = () => {
+        const paginas = [];
+        const rango = 2;
+
+        let inicio = Math.max(1, paginaActual - rango);
+        let fin = Math.min(totalPaginas, paginaActual + rango);
+
+        if (paginaActual <= rango) {
+            fin = Math.min(totalPaginas, rango * 2 + 1);
+        }
+        if (paginaActual > totalPaginas - rango) {
+            inicio = Math.max(1, totalPaginas - rango * 2);
+        }
+
+        for (let i = inicio; i <= fin; i++) {
+            paginas.push(i);
+        }
+
+        return paginas;
+    };
+
+    const NavegacionCrud = () => (
+        <div className="crud-navegacion-container">
+            <div className="crud-pagination">
+                <button
+                    className="btn btn-pagination"
+                    onClick={productsNavigatePrev}
+                    disabled={paginaActual === 1}
+                    title="Página anterior"
+                >
+                    <i className="fas fa-chevron-left me-2"></i>
+                    Anterior
+                </button>
+
+                {totalPaginas > 1 && generarNumerosPagina().map(numeroPagina => (
+                    <button
+                        key={numeroPagina}
+                        onClick={() => irAPagina(numeroPagina)}
+                        className={`btn-numero-pagina-crud ${numeroPagina === paginaActual ? 'activo' : ''}`}
+                    >
+                        {numeroPagina}
+                    </button>
+                ))}
+
+                <button
+                    className="btn btn-pagination"
+                    onClick={productsNavigateNext}
+                    disabled={paginaActual === totalPaginas}
+                    title="Página siguiente"
+                >
+                    Siguiente
+                    <i className="fas fa-chevron-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+    );
+
     if (cargando) {
         return (
             <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '300px' }}>
@@ -80,8 +141,8 @@ export function ProductCrud() {
             <div className="crud-header">
                 <h5><i className="fas fa-boxes me-2"></i>Gestión de Productos</h5>
                 <div className="crud-stats">
-                    <span className="badge bg-warning text-dark mx-3" title="Cantidad todal de Productos Mostrados en la Grilla">
-                        Total: {productos.length} productos
+                    <span className="badge bg-warning text-dark mx-3" title="Cantidad total de Productos">
+                        Total: {totalProductos} productos
                     </span>
 
                     <button
@@ -95,35 +156,8 @@ export function ProductCrud() {
                 </div>
             </div>
 
-            <div className="crud-pagination mb-5">
-                <button
-                    className="btn btn-pagination"
-                    onClick={productsNavigatePrev}
-                    title="Página anterior"
-                >
-                    <i className="fas fa-chevron-left me-2"></i>
-                    Anterior
-                </button>
-
-                <button
-                    className="btn btn-pagination"
-                    onClick={() => setApiPage(1)}
-                    title="Primera página"
-                >
-                    <i className="fas fa-home me-2"></i>
-                    Inicio
-                </button>
-
-                <button
-                    className="btn btn-pagination"
-                    onClick={productsNavigateNext}
-                    title="Página siguiente"
-                >
-                    Siguiente
-                    <i className="fas fa-chevron-right ms-2"></i>
-                </button>
-            </div>
-
+            {/* Navegación superior */}
+            <NavegacionCrud />
 
             <div className="table-responsive">
                 <table className="custom-table">
@@ -139,7 +173,7 @@ export function ProductCrud() {
                         </tr>
                     </thead>
                     <tbody>
-                        {productos.map((producto) => (
+                        {productosPaginados.map((producto) => (
                             <tr key={producto.id}>
                                 <td className="id-cell">{producto.id}</td>
 
@@ -234,7 +268,6 @@ export function ProductCrud() {
                                     ) : (
                                         <div className="action-buttons">
                                             <i title="Editar" className="fas fa-edit" onClick={() => handleEdit(producto)}></i>
-
                                             <i onClick={() => handleDelete(producto.id)} title="Eliminar" className="fas fa-trash"></i>
                                         </div>
                                     )}
@@ -245,7 +278,7 @@ export function ProductCrud() {
                 </table>
             </div>
 
-            {productos.length === 0 && (
+            {totalProductos === 0 && (
                 <div className="empty-state">
                     <i className="fas fa-box-open"></i>
                     <h4>No hay productos disponibles</h4>
@@ -253,34 +286,7 @@ export function ProductCrud() {
                 </div>
             )}
 
-            <div className="crud-pagination">
-                <button
-                    className="btn btn-pagination"
-                    onClick={productsNavigatePrev}
-                    title="Página anterior"
-                >
-                    <i className="fas fa-chevron-left me-1"></i>
-                    Anterior
-                </button>
-
-                <button
-                    className="btn btn-pagination"
-                    onClick={() => setApiPage(1)}
-                    title="Primera página"
-                >
-                    <i className="fas fa-home me-1"></i>
-                    Inicio
-                </button>
-
-                <button
-                    className="btn btn-pagination"
-                    onClick={productsNavigateNext}
-                    title="Página siguiente"
-                >
-                    Siguiente
-                    <i className="fas fa-chevron-right ms-1"></i>
-                </button>
-            </div>
+            {totalPaginas > 1 && <NavegacionCrud />}
 
 
             {showModal && (

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { initSweet } from '../assets/SweetAlert'
@@ -10,6 +11,12 @@ export function ProductosProvider({ children }) {
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     const [apiPage, setApiPage] = useState(1);
+
+
+    const [paginacion, setPaginacion] = useState({
+        paginaActual: 1,
+        productosPorPagina: 24
+    });
 
     useEffect(() => {
         setCargando(true);
@@ -34,13 +41,10 @@ export function ProductosProvider({ children }) {
                 // 1º Traigo la información del JSON
                 const jsonProducts = getJsonDataProducts();
 
-
                 console.log("\n" + "=".repeat(80));
                 console.log(`🚀 INFORMACION DE JSON`);
                 console.log("📋 Cantidad Productos: ", jsonProducts.length);
                 console.log("=".repeat(80));
-
-                console.log(JSON.stringify(jsonProducts));
 
                 // 2ª Unifico los datos del JSON con los de la API 
                 const mergedProducts = fusionUpdateProducts(jsonProducts, mappedProductosAPI);
@@ -50,16 +54,7 @@ export function ProductosProvider({ children }) {
                 console.log("📋 Cantidad Productos API: ", mappedProductosAPI.length);
                 console.log("📋 Cantidad Productos JSON: ", jsonProducts.length);
                 console.log("📋 Cantidad Productos Fusion: ", mergedProducts.length);
-                console.log("│", mappedProductosAPI);
                 console.log("=".repeat(80));
-
-
-                console.log("\n" + "=".repeat(80));
-                console.log("📝 UNIFICACION DE DATOS JSON CON API");
-                console.log("📋 Cantidad Productos: ", mergedProducts.length);
-                console.log("│", mergedProducts);
-                console.log("=".repeat(80));
-
 
                 // 3ª Unifico los datos guardados en el LOCALSTORAGE
                 const finalProducts = getLocalStorageProducts(mergedProducts);
@@ -67,9 +62,10 @@ export function ProductosProvider({ children }) {
                 console.log("\n" + "=".repeat(80));
                 console.log("📝 PRODUCTOS EN LISTA FINAL");
                 console.log("📋 Cantidad Productos: ", finalProducts.length);
-                console.log("│", finalProducts);
                 console.log("=".repeat(80));
 
+                // Filtro Ordenamiento byID
+                finalProducts.sort((a, b) => b.id - a.id);
 
                 setProductos(finalProducts);
                 setCargando(false);
@@ -83,6 +79,63 @@ export function ProductosProvider({ children }) {
 
         return () => clearTimeout(timeoutId);
     }, [apiPage]);
+
+    // Función para obtener productos de la página actual
+    const getProductosPaginados = () => {
+        const inicio = (paginacion.paginaActual - 1) * paginacion.productosPorPagina;
+        const fin = inicio + paginacion.productosPorPagina;
+        return productos.slice(inicio, fin);
+    };
+
+    // Calcular total de páginas
+    const getTotalPaginas = () => {
+        return Math.ceil(productos.length / paginacion.productosPorPagina);
+    };
+
+    // Funciones de navegación corregidas
+    const productsNavigateNext = () => {
+        const totalPaginas = getTotalPaginas();
+        setPaginacion(prev => ({
+            ...prev,
+            paginaActual: prev.paginaActual < totalPaginas ? prev.paginaActual + 1 : prev.paginaActual
+        }));
+    };
+
+    const productsNavigatePrev = () => {
+        setPaginacion(prev => ({
+            ...prev,
+            paginaActual: prev.paginaActual > 1 ? prev.paginaActual - 1 : 1
+        }));
+    };
+
+    // Función para ir a una página específica
+    const irAPagina = (numeroPagina) => {
+        const totalPaginas = getTotalPaginas();
+        if (numeroPagina >= 1 && numeroPagina <= totalPaginas) {
+            setPaginacion(prev => ({
+                ...prev,
+                paginaActual: numeroPagina
+            }));
+        }
+    };
+
+    // Función para cambiar productos por página
+    const cambiarProductosPorPagina = (cantidad) => {
+        setPaginacion(prev => ({
+            paginaActual: 1, // Resetear a primera página
+            productosPorPagina: cantidad
+        }));
+    };
+
+    // Reset de paginación cuando cambian los productos
+    useEffect(() => {
+        if (productos.length > 0) {
+            setPaginacion(prev => ({
+                ...prev,
+                paginaActual: 1
+            }));
+        }
+    }, [productos.length]);
 
     const getJsonDataProducts = () => {
         if (productJSON !== null && productJSON.length > 0) {
@@ -150,6 +203,8 @@ export function ProductosProvider({ children }) {
 
         setProductos(productos => {
             const productosActualizados = [...productos, nuevoProducto];
+            productosActualizados.sort((a, b) => b.id - a.id);
+
             updateLocalStorage(productosActualizados);
             return productosActualizados;
         });
@@ -223,8 +278,6 @@ export function ProductosProvider({ children }) {
             return null;
         }
 
-        console.log("Producto Encontrado", productos.find(p => p.id === parseInt(id) || p.id === id));
-
         return productos.find(p => p.id === parseInt(id) || p.id === id) || null;
     }
 
@@ -237,31 +290,36 @@ export function ProductosProvider({ children }) {
         return maxId + 1;
     }
 
-    const productsNavigateNext = () => {
-        setApiPage((prev) => prev + 1);
-    }
-
-    const productsNavigatePrev = () => {
-        setApiPage((prev) => (prev > 1 ? prev - 1 : 1));
-    }
-
     const updateLocalStorage = (productosActualizados) => {
         localStorage.setItem("products", JSON.stringify(productosActualizados));
     };
 
+
+
+    const productosPaginados = getProductosPaginados();
+    const totalPaginas = getTotalPaginas();
+    const totalProductos = productos.length;
+
     return (
         <ProductosContext.Provider value={{
             productos,
+            productosPaginados,
             cargando,
             error,
             agregarProducto,
             eliminarProducto,
             modificarProducto,
+            getProductoById,
             productsNavigateNext,
             productsNavigatePrev,
+            irAPagina,
+            cambiarProductosPorPagina,
+            paginaActual: paginacion.paginaActual,
+            productosPorPagina: paginacion.productosPorPagina,
+            totalPaginas,
+            totalProductos,
             apiPage,
-            setApiPage,
-            getProductoById
+            setApiPage
         }}>
             {children}
         </ProductosContext.Provider>

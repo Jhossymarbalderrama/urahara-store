@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useProductosContext } from "../contexts/ProductosContext";
+import "../styles/formularioProductos.css";
 
 export function FormularioProducto() {
     const [product, setProducto] = useState({
@@ -64,7 +65,7 @@ export function FormularioProducto() {
                 category: product.category.trim(),
                 price: parseFloat(product.price).toFixed(2),
                 description: product.description.trim(),
-                image: product.image.trim() || "https://via.placeholder.com/300x400?text=Sin+Imagen"
+                image: product.image.trim() || "https://bitsofco.de/img/Qo5mfYDE5v-350.avif"
             };
 
             agregarProducto(productoParaAgregar);
@@ -81,38 +82,38 @@ export function FormularioProducto() {
     };
 
     return (
-        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-            <form onSubmit={handleSubmit}>
-                <h2>Agregar Producto</h2>
+        <div className="formulario-container">
+            <form onSubmit={handleSubmit} className="formulario-producto">
+                <h2 className="formulario-titulo">Agregar Producto</h2>
 
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Nombre:</label>
+                <div className="campo-container">
+                    <label className="campo-label">Nombre:</label>
                     <input
                         type="text"
                         name="name"
                         value={product.name}
                         onChange={handleChange}
-                        style={{ width: '100%', padding: '8px', border: errores.name ? '2px solid red' : '1px solid #ccc' }}
+                        className={`campo-input ${errores.name ? 'error' : ''}`}
                         placeholder="Nombre del manga"
                     />
-                    {errores.name && <p style={{ color: 'red', margin: '5px 0 0 0', fontSize: '14px' }}>{errores.name}</p>}
+                    {errores.name && <p className="error-message">{errores.name}</p>}
                 </div>
 
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Categoría:</label>
+                <div className="campo-container">
+                    <label className="campo-label">Categoría:</label>
                     <input
                         type="text"
                         name="category"
                         value={product.category}
                         onChange={handleChange}
-                        style={{ width: '100%', padding: '8px', border: errores.category ? '2px solid red' : '1px solid #ccc' }}
+                        className={`campo-input ${errores.category ? 'error' : ''}`}
                         placeholder="Ej: Shonen, Seinen, etc."
                     />
-                    {errores.category && <p style={{ color: 'red', margin: '5px 0 0 0', fontSize: '14px' }}>{errores.category}</p>}
+                    {errores.category && <p className="error-message">{errores.category}</p>}
                 </div>
 
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Precio:</label>
+                <div className="campo-container">
+                    <label className="campo-label">Precio:</label>
                     <input
                         type="number"
                         name="price"
@@ -120,56 +121,39 @@ export function FormularioProducto() {
                         onChange={handleChange}
                         step="0.01"
                         min="0"
-                        style={{ width: '100%', padding: '8px', border: errores.price ? '2px solid red' : '1px solid #ccc' }}
+                        className={`campo-input ${errores.price ? 'error' : ''}`}
                         placeholder="0.00"
                     />
-                    {errores.price && <p style={{ color: 'red', margin: '5px 0 0 0', fontSize: '14px' }}>{errores.price}</p>}
+                    {errores.price && <p className="error-message">{errores.price}</p>}
                 </div>
 
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Descripción:</label>
+                <div className="campo-container">
+                    <label className="campo-label">Descripción:</label>
                     <textarea
                         name="description"
                         value={product.description}
                         onChange={handleChange}
                         rows="4"
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            border: errores.description ? '2px solid red' : '1px solid #ccc',
-                            resize: 'vertical'
-                        }}
+                        className={`campo-textarea ${errores.description ? 'error' : ''}`}
                         placeholder="Descripción del manga (mínimo 10 caracteres)"
                     />
-                    {errores.description && <p style={{ color: 'red', margin: '5px 0 0 0', fontSize: '14px' }}>{errores.description}</p>}
+                    {errores.description && <p className="error-message">{errores.description}</p>}
                 </div>
 
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>URL de la Imagen (opcional):</label>
+                <div className="campo-container">
+                    <label className="campo-label">URL de la Imagen (opcional):</label>
                     <input
                         type="url"
                         name="image"
                         value={product.image}
                         onChange={handleChange}
-                        style={{ width: '100%', padding: '8px', border: errores.image ? '2px solid red' : '1px solid #ccc' }}
+                        className={`campo-input ${errores.image ? 'error' : ''}`}
                         placeholder="https://ejemplo.com/imagen.jpg"
                     />
-                    {errores.image && <p style={{ color: 'red', margin: '5px 0 0 0', fontSize: '14px' }}>{errores.image}</p>}
-                    <small style={{ color: '#666' }}>Si no se proporciona, se usará una imagen por defecto</small>
+                    {errores.image && <p className="error-message">{errores.image}</p>}
                 </div>
 
-                <button
-                    type="submit"
-                    style={{
-                        backgroundColor: '#007bff',
-                        color: 'white',
-                        padding: '10px 20px',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                        fontSize: '16px'
-                    }}
-                >
+                <button type="submit" className="btn-submit">
                     Agregar Producto
                 </button>
             </form>

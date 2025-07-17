@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 .product-crud-container {
     background-color: #f8f9fa;
     padding: 2rem 8cqmax;
@@ -168,7 +176,6 @@
     text-align: center;
 }
 
-/* Botones de acción */
 .action-buttons {
     display: flex;
     gap: 15px;
@@ -206,7 +213,6 @@
     justify-content: center;
 }
 
-/* Estado vacío */
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -224,14 +230,51 @@
     margin-bottom: 10px;
 }
 
+
+.crud-navegacion-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 15px;
+}
+
 .crud-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin: 30px 0;
+    gap: 8px;
     flex-wrap: wrap;
 }
+
+.btn-numero-pagina-crud {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 40px;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-numero-pagina-crud:hover {
+    background-color: #f0f0f0;
+    border-color: #bbb;
+}
+
+.btn-numero-pagina-crud.activo {
+    background-color: #FF9E02;
+    color: white;
+    border-color: #FF9E02;
+}
+
+.btn-numero-pagina-crud.activo:hover {
+    background-color: #ffba4b;
+    border-color: #ffba4b;
+}
+
 
 .crud-pagination button .fas {
     font-size: 14px;
@@ -256,7 +299,24 @@
     box-shadow: 0 4px 8px rgba(255, 158, 2, 0.3);
 }
 
-/* Responsive Design Mejorado */
+.btn-pagination:disabled {
+    background-color: #ccc;
+    border-color: #999;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-pagination:disabled:hover {
+    background-color: #ccc;
+    border-color: #999;
+    color: #666;
+    transform: none;
+    box-shadow: none;
+}
+
 @media (max-width: 1400px) {
     .product-crud-container {
         padding: 2rem 0.5rem;
@@ -354,6 +414,25 @@
         width: 200px;
         margin: 5px 0;
     }
+
+
+    .crud-navegacion-container {
+        padding: 12px;
+    }
+
+    .crud-pagination {
+        gap: 5px;
+    }
+
+    .btn-pagination,
+    .btn-numero-pagina-crud {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .btn-numero-pagina-crud {
+        min-width: 35px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -388,7 +467,22 @@
     }
 }
 
-/* Animaciones */
+@media (max-width: 480px) {
+    .crud-pagination {
+        gap: 3px;
+    }
+
+    .btn-pagination,
+    .btn-numero-pagina-crud {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .btn-numero-pagina-crud {
+        min-width: 30px;
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -405,14 +499,12 @@
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Estados de carga */
 .spinner-border.text-warning {
     color: #FF9E02 !important;
     width: 3rem;
     height: 3rem;
 }
 
-/* Formularios inline */
 .form-control-sm {
     border-color: #FF9E02;
     transition: all 0.3s ease;
@@ -421,15 +513,6 @@
 .form-control-sm:focus {
     border-color: #e88a00;
     box-shadow: 0 0 0 0.2rem rgba(255, 158, 2, 0.25);
-}
-
-/* Mejoras adicionales para prevenir overflow */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    overflow-x: hidden;
 }
 
 .table-responsive::-webkit-scrollbar {

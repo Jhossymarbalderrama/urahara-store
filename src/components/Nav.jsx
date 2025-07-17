@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import "../styles/nav.css"
 import { useAuthContext } from "../contexts/AuthContext";
 
 export function Nav({ productsCarrito }) {
     const { isLogin } = useAuthContext();
-
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
-
 
     function navigateHome() {
         navigate("/");
+        setIsMenuOpen(false); // Cerrar menú al navegar
     }
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
 
     return (
         <div>
@@ -21,39 +29,87 @@ export function Nav({ productsCarrito }) {
                 </div>
             </div>
 
-            <nav style={{ padding: "20px 5rem" }} className="nav-container">
-                <ul style={{ listStyle: "none", display: "flex", justifyContent: "space-between", margin: 0, fontSize: "16px", alignItems: "center" }}>
+            <nav className="nav-container">
+                <button
+                    className="mobile-menu-toggle"
+                    onClick={toggleMenu}
+                    aria-label="Toggle navigation menu"
+                >
+                    <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+                    <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+                    <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+                </button>
 
-                    <li className="d-flex flex-row justify-content-center gap-5">
-                        <NavLink to="/" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>Home</NavLink>
-                        <NavLink to="/products" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>Productos</NavLink>
-                        <NavLink to="/about" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>Nosotros</NavLink>
-                        <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>Contacto</NavLink>
+                {isMenuOpen && <div className="mobile-menu-overlay" onClick={closeMenu}></div>}
+
+                <ul className={`nav-list ${isMenuOpen ? 'mobile-open' : ''}`}>
+                    <li className="nav-group nav-main-links">
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            onClick={closeMenu}
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink
+                            to="/products"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            onClick={closeMenu}
+                        >
+                            Productos
+                        </NavLink>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            onClick={closeMenu}
+                        >
+                            Nosotros
+                        </NavLink>
+                        <NavLink
+                            to="/contact"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            onClick={closeMenu}
+                        >
+                            Contacto
+                        </NavLink>
                     </li>
 
-                    <li className="d-flex flex-row justify-content-center gap-3">
-
-
-                        <NavLink to="/login" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
-                            style={{ textDecoration: "none" }}>
+                    <li className="nav-group nav-user-links">
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            onClick={closeMenu}
+                        >
                             <div className={isLogin() ? "logout" : ""}>
                                 {isLogin() ? "Logout" : "Login"}
                             </div>
                         </NavLink>
 
-                        <div className="text-white fw-bold">|</div>
+                        <div className="nav-separator">|</div>
 
-                        <NavLink to="/administrador" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}> Admin</NavLink>
+                        <NavLink
+                            to="/administrador"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"}
+                            onClick={closeMenu}
+                        >
+                            Admin
+                        </NavLink>
 
-                        <div className="text-white fw-bold">|</div>
+                        <div className="nav-separator">|</div>
 
-                        <NavLink to="/cart" className={({ isActive }) => isActive ? "nav-item nav-item-activate" : "nav-item"} style={{ textDecoration: "none" }}>
+                        <NavLink
+                            to="/cart"
+                            className={({ isActive }) => isActive ? "nav-item nav-item-activate cart-link" : "nav-item cart-link"}
+                            onClick={closeMenu}
+                        >
                             <i className="fa-solid fa-cart-shopping"></i>
-                            <span>{productsCarrito.length > 0 ? productsCarrito.length : 0}</span>
+                            <span className="cart-count">
+                                {productsCarrito.length > 0 ? productsCarrito.length : 0}
+                            </span>
                         </NavLink>
                     </li>
                 </ul>
             </nav>
-        </div >
+        </div>
     )
 }
