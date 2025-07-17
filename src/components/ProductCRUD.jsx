@@ -10,8 +10,8 @@ export function ProductCrud() {
 
     const contextValue = useProductosContext();
     const {
-        productosPaginados,        // Cambiado de 'productos' a 'productosPaginados'
-        totalProductos,           // Total de productos
+        productosPaginados,
+        totalProductos,
         productsNavigatePrev,
         productsNavigateNext,
         irAPagina,
@@ -59,7 +59,7 @@ export function ProductCrud() {
         }));
     };
 
-    // Función para generar números de página (reutilizada del otro componente)
+
     const generarNumerosPagina = () => {
         const paginas = [];
         const rango = 2;

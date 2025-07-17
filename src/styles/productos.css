@@ -29,7 +29,7 @@ body {
     box-sizing: border-box;
 }
 
-/* =============== ESTILOS BASE - ESCRITORIO =============== */
+
 
 .productos-page {
     width: 100%;
@@ -51,8 +51,8 @@ body {
 }
 
 .product-card {
-    min-height: 450px;
-    height: 450px;
+    min-height: 500px;
+    height: 500px;
     width: 100%;
     overflow: hidden;
     border-radius: 8px;
@@ -151,7 +151,7 @@ body {
     background-color: #ffba4b;
 }
 
-/* NAVEGACIÓN BASE - ESCRITORIO */
+
 .navegacion-container {
     display: flex;
     flex-direction: column;
@@ -263,7 +263,7 @@ body {
     border-color: #ffba4b;
 }
 
-/* ESTADOS */
+
 .loading-container {
     display: flex;
     flex-direction: column;
@@ -328,7 +328,7 @@ body {
     font-size: 1rem;
 }
 
-/* =============== TABLETS (768px - 1024px) =============== */
+
 
 @media (max-width: 1024px) and (min-width: 769px) {
     .productos-page {
@@ -397,7 +397,7 @@ body {
     }
 }
 
-/* =============== MÓVILES (hasta 768px) =============== */
+
 
 @media (max-width: 768px) {
     .productos-page {
@@ -441,7 +441,7 @@ body {
         font-size: 12px;
     }
 
-    /* NAVEGACIÓN MÓVIL - HORIZONTAL */
+
     .navegacion-container {
         gap: 15px;
         margin: 20px 0;
@@ -510,7 +510,7 @@ body {
     }
 }
 
-/* =============== MÓVILES PEQUEÑOS (hasta 480px) =============== */
+
 
 @media (max-width: 480px) {
     .productos-page {
@@ -598,7 +598,7 @@ body {
     }
 }
 
-/* =============== MÓVILES MUY PEQUEÑOS (hasta 360px) =============== */
+
 
 @media (max-width: 360px) {
     .productos-page {
@@ -680,7 +680,7 @@ body {
     }
 }
 
-/* =============== ACCESIBILIDAD Y ESTADOS =============== */
+
 
 .btn-pagination:focus,
 .btn-numero-pagina:focus {
@@ -726,7 +726,7 @@ body {
     }
 }
 
-/* =============== ANIMACIONES =============== */
+
 
 .navegacion-container,
 .products-container {

@@ -1,4 +1,3 @@
-/* =============== ESTILOS BASE (SIN CAMBIOS) =============== */
 body {
     background-color: white;
 }
@@ -43,9 +42,9 @@ body {
     font-weight: bold;
 }
 
-/* =============== RESPONSIVE DESIGN =============== */
 
-/* Pantallas muy grandes */
+
+
 @media (min-width: 1400px) {
     .about-section {
         padding: 80px 40px;
@@ -70,7 +69,7 @@ body {
     }
 }
 
-/* Tablets grandes */
+
 @media (max-width: 1024px) {
     .about-section {
         padding: 50px 18px;
@@ -95,7 +94,7 @@ body {
     }
 }
 
-/* Tablets */
+
 @media (max-width: 768px) {
     .about-section {
         padding: 40px 15px;
@@ -122,7 +121,7 @@ body {
     }
 }
 
-/* Móviles grandes */
+
 @media (max-width: 576px) {
     .about-section {
         padding: 35px 12px;
@@ -149,7 +148,7 @@ body {
     }
 }
 
-/* Móviles medianos */
+
 @media (max-width: 480px) {
     .about-section {
         padding: 30px 10px;
@@ -176,7 +175,7 @@ body {
     }
 }
 
-/* Móviles pequeños */
+
 @media (max-width: 360px) {
     .about-section {
         padding: 25px 8px;
@@ -203,7 +202,7 @@ body {
     }
 }
 
-/* =============== ORIENTACIÓN HORIZONTAL =============== */
+
 
 @media (max-width: 768px) and (orientation: landscape) {
     .about-section {
@@ -253,12 +252,12 @@ body {
     }
 }
 
-/* =============== MEJORAS DE ACCESIBILIDAD =============== */
-
-/* Reducir animaciones para usuarios sensibles */
 
 
-/* Mejorar contraste para usuarios con problemas de visión */
+
+
+
+
 @media (prefers-contrast: high) {
     .about-text {
         color: #fff;
@@ -266,15 +265,15 @@ body {
 
 }
 
-/* =============== AJUSTES FINOS =============== */
 
-/* Asegurar que el contenido no se desborde */
+
+
 .about-container {
     box-sizing: border-box;
     padding: 0 10px;
 }
 
-/* Mejorar la legibilidad en pantallas muy pequeñas */
+
 @media (max-width: 320px) {
     .about-section {
         padding: 20px 5px;
@@ -300,18 +299,18 @@ body {
     }
 }
 
-/* Optimización para pantallas táctiles */
+
 @media (hover: none) and (pointer: coarse) {
     .about-text {
         font-size: 1rem;
-        /* Tamaño mínimo para evitar zoom en móviles */
+
         line-height: 1.7;
     }
 }
 
-/* =============== MEJORAS ADICIONALES =============== */
 
-/* Mejorar el espaciado en pantallas intermedias */
+
+
 @media (min-width: 481px) and (max-width: 767px) {
     .about-section {
         padding: 45px 14px;
@@ -330,7 +329,7 @@ body {
     }
 }
 
-/* Ajuste específico para tablets en portrait */
+
 @media (min-width: 769px) and (max-width: 1023px) {
     .about-section {
         padding: 55px 16px;
@@ -347,13 +346,13 @@ body {
     }
 }
 
-/* Prevenir problemas de overflow en el texto */
+
 .about-text {
     word-wrap: break-word;
     hyphens: auto;
 }
 
-/* Asegurar que strong y span mantengan el color en todos los tamaños */
+
 @media (max-width: 768px) {
 
     .about-text strong,

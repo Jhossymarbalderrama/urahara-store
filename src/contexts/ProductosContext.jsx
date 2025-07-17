@@ -34,11 +34,11 @@ export function ProductosProvider({ children }) {
                     name: d.title,
                     category: d.demographics?.[0]?.name || "Sin categoría",
                     price: (Math.random() * 150).toFixed(2),
-                    description: d.background?.slice(0, 250) + "..." || "Sin descripción disponible",
+                    description: d.background?.slice(0, 450) + "..." || "Sin descripción disponible",
                     image: d.images?.webp?.large_image_url || ""
                 }));
 
-                // 1º Traigo la información del JSON
+
                 const jsonProducts = getJsonDataProducts();
 
                 console.log("\n" + "=".repeat(80));
@@ -46,7 +46,7 @@ export function ProductosProvider({ children }) {
                 console.log("📋 Cantidad Productos: ", jsonProducts.length);
                 console.log("=".repeat(80));
 
-                // 2ª Unifico los datos del JSON con los de la API 
+
                 const mergedProducts = fusionUpdateProducts(jsonProducts, mappedProductosAPI);
 
                 console.log("\n" + "=".repeat(80));
@@ -56,7 +56,7 @@ export function ProductosProvider({ children }) {
                 console.log("📋 Cantidad Productos Fusion: ", mergedProducts.length);
                 console.log("=".repeat(80));
 
-                // 3ª Unifico los datos guardados en el LOCALSTORAGE
+
                 const finalProducts = getLocalStorageProducts(mergedProducts);
 
                 console.log("\n" + "=".repeat(80));
@@ -64,7 +64,7 @@ export function ProductosProvider({ children }) {
                 console.log("📋 Cantidad Productos: ", finalProducts.length);
                 console.log("=".repeat(80));
 
-                // Filtro Ordenamiento byID
+
                 finalProducts.sort((a, b) => b.id - a.id);
 
                 setProductos(finalProducts);
@@ -80,19 +80,19 @@ export function ProductosProvider({ children }) {
         return () => clearTimeout(timeoutId);
     }, [apiPage]);
 
-    // Función para obtener productos de la página actual
+
     const getProductosPaginados = () => {
         const inicio = (paginacion.paginaActual - 1) * paginacion.productosPorPagina;
         const fin = inicio + paginacion.productosPorPagina;
         return productos.slice(inicio, fin);
     };
 
-    // Calcular total de páginas
+
     const getTotalPaginas = () => {
         return Math.ceil(productos.length / paginacion.productosPorPagina);
     };
 
-    // Funciones de navegación corregidas
+
     const productsNavigateNext = () => {
         const totalPaginas = getTotalPaginas();
         setPaginacion(prev => ({
@@ -108,7 +108,7 @@ export function ProductosProvider({ children }) {
         }));
     };
 
-    // Función para ir a una página específica
+
     const irAPagina = (numeroPagina) => {
         const totalPaginas = getTotalPaginas();
         if (numeroPagina >= 1 && numeroPagina <= totalPaginas) {
@@ -119,15 +119,15 @@ export function ProductosProvider({ children }) {
         }
     };
 
-    // Función para cambiar productos por página
+
     const cambiarProductosPorPagina = (cantidad) => {
         setPaginacion(prev => ({
-            paginaActual: 1, // Resetear a primera página
+            paginaActual: 1,
             productosPorPagina: cantidad
         }));
     };
 
-    // Reset de paginación cuando cambian los productos
+
     useEffect(() => {
         if (productos.length > 0) {
             setPaginacion(prev => ({

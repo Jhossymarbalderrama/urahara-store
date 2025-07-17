@@ -149,7 +149,7 @@
     box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* =============== TABLETS GRANDES (1024px - 1400px) =============== */
+
 @media (min-width: 1024px) and (max-width: 1400px) {
     .contact-container {
         padding: 80px 40px;
@@ -172,7 +172,7 @@
     }
 }
 
-/* =============== TABLETS (768px - 1024px) =============== */
+
 @media (max-width: 1024px) and (min-width: 769px) {
     .contact-container {
         padding: 50px 18px;
@@ -213,7 +213,7 @@
     }
 }
 
-/* =============== MÓVILES (hasta 768px) =============== */
+
 @media (max-width: 768px) {
     .contact-container {
         padding: 40px 15px;
@@ -268,7 +268,7 @@
     }
 }
 
-/* =============== MÓVILES GRANDES (hasta 576px) =============== */
+
 @media (max-width: 576px) {
     .contact-container {
         padding: 35px 12px;
@@ -318,7 +318,7 @@
     }
 }
 
-/* =============== MÓVILES PEQUEÑOS (hasta 480px) =============== */
+
 @media (max-width: 480px) {
     .contact-container {
         padding: 30px 10px;
@@ -377,7 +377,7 @@
     }
 }
 
-/* =============== MÓVILES MUY PEQUEÑOS (hasta 360px) =============== */
+
 @media (max-width: 360px) {
     .contact-container {
         padding: 25px 8px;
@@ -426,7 +426,7 @@
     }
 }
 
-/* =============== ORIENTACIÓN HORIZONTAL =============== */
+
 @media (max-width: 768px) and (orientation: landscape) {
     .contact-container {
         padding: 25px 15px;
@@ -473,7 +473,7 @@
     }
 }
 
-/* =============== ACCESIBILIDAD =============== */
+
 @media (prefers-reduced-motion: reduce) {
 
     .info-card,
@@ -513,7 +513,7 @@
     }
 }
 
-/* =============== MEJORAS ADICIONALES =============== */
+
 @media (max-width: 320px) {
     .contact-container {
         padding: 20px 5px;
