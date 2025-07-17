@@ -26,22 +26,12 @@ export function Productos({ agregarCarrito }) {
             irAPagina,
             paginaActual,
             totalPaginas,
-            totalProductos,
-            productosPorPagina,
             cargando,
             error
         } = contextValue;
 
         const Navegacion = () => (
             <div className="navegacion-container">
-                {screenSize > 576 && (
-                    <div className="productos-info">
-                        <span className="info-text">
-                            Mostrando {(paginaActual - 1) * productosPorPagina + 1} - {Math.min(paginaActual * productosPorPagina, totalProductos)} de {totalProductos} productos
-                        </span>
-                    </div>
-                )}
-
                 <div className="navegacion-buttons">
                     <button
                         className="btn-pagination"
@@ -77,14 +67,6 @@ export function Productos({ agregarCarrito }) {
                         <i className="fas fa-chevron-right"></i>
                     </button>
                 </div>
-
-                {screenSize <= 576 && (
-                    <div className="pagina-info-mobile">
-                        <span className="info-text">
-                            Página {paginaActual} de {totalPaginas} ({totalProductos} productos)
-                        </span>
-                    </div>
-                )}
             </div>
         );
 
@@ -92,27 +74,31 @@ export function Productos({ agregarCarrito }) {
             const paginas = [];
             let rango = 2;
 
-            // Ajustar rango según el tamaño de pantalla para mejor adaptación
             if (screenSize <= 360) {
-                rango = 0; // Solo página actual
+                rango = 0;
             } else if (screenSize <= 480) {
-                rango = 1; // Página actual + 1 a cada lado = máximo 3 páginas
+                rango = 1;
             } else if (screenSize <= 768) {
-                rango = 1; // Página actual + 1 a cada lado = máximo 3 páginas
+                rango = 1;
             }
 
             let inicio = Math.max(1, paginaActual - rango);
             let fin = Math.min(totalPaginas, paginaActual + rango);
 
-            // Para pantallas muy pequeñas, mostrar solo página actual y adyacentes
             if (screenSize <= 360) {
                 if (paginaActual > 1) paginas.push(paginaActual - 1);
                 paginas.push(paginaActual);
                 if (paginaActual < totalPaginas) paginas.push(paginaActual + 1);
-                return paginas.slice(0, 2); // Máximo 2 páginas en 360px
+                return paginas;
             }
 
-            // Para móviles pequeños, limitar a máximo 3 páginas
+            if (paginaActual <= rango) {
+                fin = Math.min(totalPaginas, rango * 2 + 1);
+            }
+            if (paginaActual > totalPaginas - rango) {
+                inicio = Math.max(1, totalPaginas - rango * 2);
+            }
+
             if (screenSize <= 480) {
                 const maxPaginas = 3;
                 const totalPaginasAMostrar = fin - inicio + 1;
@@ -121,24 +107,6 @@ export function Productos({ agregarCarrito }) {
                     inicio = Math.max(1, paginaActual - mitad);
                     fin = Math.min(totalPaginas, inicio + maxPaginas - 1);
                 }
-            }
-
-            // Para móviles medianos, limitar a máximo 4 páginas
-            if (screenSize <= 768 && screenSize > 480) {
-                const maxPaginas = 4;
-                const totalPaginasAMostrar = fin - inicio + 1;
-                if (totalPaginasAMostrar > maxPaginas) {
-                    const mitad = Math.floor(maxPaginas / 2);
-                    inicio = Math.max(1, paginaActual - mitad);
-                    fin = Math.min(totalPaginas, inicio + maxPaginas - 1);
-                }
-            }
-
-            if (paginaActual <= rango) {
-                fin = Math.min(totalPaginas, rango * 2 + 1);
-            }
-            if (paginaActual > totalPaginas - rango) {
-                inicio = Math.max(1, totalPaginas - rango * 2);
             }
 
             for (let i = inicio; i <= fin; i++) {
