@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 import "../styles/login.css";
 import { crearUsuario, loginEmailPass } from "../auth/firebase";
+import { initSweet } from '../assets/SweetAlert';
 
 export function Login() {
     const [usuario, setUsuario] = useState('');
@@ -26,9 +27,45 @@ export function Login() {
         try {
             await crearUsuario(usuario, password);
             login(usuario);
+
+            initSweet(
+                "Cuenta creada exitosamente",
+                `¡Bienvenido! Tu cuenta ha sido registrada correctamente`,
+                "success",
+                "Aceptar"
+            );
+
             navigate('/');
         } catch (error) {
-            alert("Error al registrar: " + error.message);
+            let errorMessage = "Error desconocido";
+
+            // Manejar diferentes tipos de errores de Firebase
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    errorMessage = "Este email ya está registrado";
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = "El formato del email no es válido";
+                    break;
+                case 'auth/operation-not-allowed':
+                    errorMessage = "El registro con email está deshabilitado";
+                    break;
+                case 'auth/weak-password':
+                    errorMessage = "La contraseña es muy débil. Usa al menos 6 caracteres";
+                    break;
+                case 'auth/network-request-failed':
+                    errorMessage = "Error de conexión. Verifica tu internet";
+                    break;
+                default:
+                    errorMessage = error.message;
+            }
+
+            initSweet(
+                "Error al registrar",
+                errorMessage,
+                "error",
+                "Aceptar"
+            );
         } finally {
             setIsLoading(false);
         }
@@ -40,12 +77,67 @@ export function Login() {
         try {
             const user = await loginEmailPass(usuario, password);
             login(usuario);
+
+            initSweet(
+                "Inicio de sesión exitoso",
+                `¡Bienvenido de vuelta!`,
+                "success",
+                "Aceptar"
+            );
+
             navigate('/');
         } catch (error) {
-            alert("Error al iniciar sesión: " + error.message);
+            let errorMessage = "Error desconocido";
+
+            // Manejar diferentes tipos de errores de Firebase
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    errorMessage = "No existe una cuenta con este email";
+                    break;
+                case 'auth/wrong-password':
+                    errorMessage = "Contraseña incorrecta";
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = "El formato del email no es válido";
+                    break;
+                case 'auth/user-disabled':
+                    errorMessage = "Esta cuenta ha sido deshabilitada";
+                    break;
+                case 'auth/too-many-requests':
+                    errorMessage = "Demasiados intentos fallidos. Intenta más tarde";
+                    break;
+                case 'auth/network-request-failed':
+                    errorMessage = "Error de conexión. Verifica tu internet";
+                    break;
+                case 'auth/invalid-credential':
+                    errorMessage = "Credenciales inválidas. Verifica tu email y contraseña";
+                    break;
+                default:
+                    errorMessage = error.message;
+            }
+
+            initSweet(
+                "Error al iniciar sesión",
+                errorMessage,
+                "error",
+                "Aceptar"
+            );
         } finally {
             setIsLoading(false);
         }
+    }
+
+    const handleLogout = () => {
+        logout();
+
+        initSweet(
+            "Sesión cerrada",
+            "Has cerrado sesión correctamente",
+            "success",
+            "Aceptar"
+        );
+
+        navigate('/');
     }
 
     const togglePasswordVisibility = () => {
@@ -243,10 +335,7 @@ export function Login() {
                             <button
                                 type="button"
                                 className="logout-btn"
-                                onClick={() => {
-                                    logout();
-                                    navigate('/');
-                                }}
+                                onClick={handleLogout}
                             >
                                 <i className="fas fa-sign-out-alt"></i>
                                 <span>Cerrar Sesión</span>
