@@ -5,7 +5,9 @@ import { FormularioProducto } from "./FormularioProductos";
 
 export function ProductCrud() {
     const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
+    const [productToDelete, setProductToDelete] = useState(null);
     const [modalMode, setModalMode] = useState('add'); // 'add' o 'edit'
 
     const contextValue = useProductosContext();
@@ -39,10 +41,22 @@ export function ProductCrud() {
         setShowModal(true);
     };
 
-    const handleDelete = (id) => {
-        if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-            eliminarProducto(id);
+    const handleDelete = (producto) => {
+        setProductToDelete(producto);
+        setShowDeleteModal(true);
+    };
+
+    const confirmDelete = () => {
+        if (productToDelete) {
+            eliminarProducto(productToDelete.id);
+            setShowDeleteModal(false);
+            setProductToDelete(null);
         }
+    };
+
+    const cancelDelete = () => {
+        setShowDeleteModal(false);
+        setProductToDelete(null);
     };
 
     const handleModalClose = () => {
@@ -158,8 +172,6 @@ export function ProductCrud() {
                 </div>
             </div>
 
-
-
             <div className="search-section">
                 <div className="search-header">
                     <h6><i className="fas fa-search me-2"></i>Buscar y Filtrar Productos</h6>
@@ -210,7 +222,6 @@ export function ProductCrud() {
                     </div>
                 </div>
             </div>
-
 
             <NavegacionCrud />
 
@@ -269,7 +280,7 @@ export function ProductCrud() {
                                             onClick={() => handleEdit(producto)}
                                         ></i>
                                         <i
-                                            onClick={() => handleDelete(producto.id)}
+                                            onClick={() => handleDelete(producto)}
                                             title="Eliminar"
                                             className="fas fa-trash"
                                         ></i>
@@ -337,6 +348,87 @@ export function ProductCrud() {
                 <div
                     className="modal-backdrop fade show"
                     onClick={handleModalClose}
+                ></div>
+            )}
+
+
+            {showDeleteModal && (
+                <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">
+                                    <i className="fas fa-exclamation-triangle me-2"></i>
+                                    Confirmar Eliminación
+                                </h5>
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    onClick={cancelDelete}
+                                ></button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="delete-confirmation-content">
+                                    <div className="delete-warning-icon">
+                                        <i className="fas fa-trash-alt"></i>
+                                    </div>
+                                    <h4 className="delete-title">¿Estás seguro?</h4>
+                                    <p className="delete-message">
+                                        Estás a punto de eliminar el producto:
+                                    </p>
+                                    {productToDelete && (
+                                        <div className="product-to-delete">
+                                            <div className="product-info-delete">
+                                                <img
+                                                    src={productToDelete.image || 'https://via.placeholder.com/60x80?text=No+Image'}
+                                                    alt={productToDelete.name}
+                                                    className="product-image-delete"
+                                                    onError={(e) => {
+                                                        e.target.src = 'https://via.placeholder.com/60x80?text=Error';
+                                                    }}
+                                                />
+                                                <div className="product-details-delete">
+                                                    <h6 className="product-name-delete">{productToDelete.name}</h6>
+                                                    <small className="product-id-delete">ID: {productToDelete.id}</small>
+                                                    <span className="product-price-delete">${productToDelete.price}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    <p className="delete-warning">
+                                        Esta acción no se puede deshacer.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <div className="delete-button-container">
+                                    <button
+                                        type="button"
+                                        className="btn-cancel-delete"
+                                        onClick={cancelDelete}
+                                    >
+                                        <i className="fas fa-times me-2"></i>
+                                        Cancelar
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn-confirm-delete"
+                                        onClick={confirmDelete}
+                                    >
+                                        <i className="fas fa-trash me-2"></i>
+                                        Eliminar Producto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showDeleteModal && (
+                <div
+                    className="modal-backdrop fade show"
+                    onClick={cancelDelete}
                 ></div>
             )}
         </div>
