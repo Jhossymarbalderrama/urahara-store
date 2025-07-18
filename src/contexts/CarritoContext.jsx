@@ -1,10 +1,36 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { initSweet } from '../assets/SweetAlert'
 
 export const CarritoContext = createContext();
 
 export function CarritoProvider({ children }) {
     const [productsCarrito, setProductsCarrito] = useState([]);
+    const [carritoIniciado, setCarritoIniciado] = useState(false);
+
+
+    useEffect(() => {
+        const carritoGuardado = localStorage.getItem("carrito");
+
+        if (carritoGuardado) {
+            try {
+                const carritoParseado = JSON.parse(carritoGuardado);
+                if (Array.isArray(carritoParseado)) {
+                    setProductsCarrito(carritoParseado);
+                }
+            } catch (error) {
+                console.error("Error al cargar carrito desde localStorage:", error);
+                localStorage.removeItem("carrito");
+            }
+        }
+        setCarritoIniciado(true);
+    }, []);
+
+
+    useEffect(() => {
+        if (carritoIniciado) {
+            localStorage.setItem("carrito", JSON.stringify(productsCarrito));
+        }
+    }, [productsCarrito, carritoIniciado]);
 
     const agregarAlCarrito = (producto, cantidad) => {
         setProductsCarrito(productos => [
