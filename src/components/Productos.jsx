@@ -17,6 +17,8 @@ export function Productos({ agregarCarrito }) {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+
+
     try {
         const contextValue = useProductosContext();
         const {
@@ -26,9 +28,22 @@ export function Productos({ agregarCarrito }) {
             irAPagina,
             paginaActual,
             totalPaginas,
+            busqueda,
+            actualizarBusqueda,
+            limpiarBusqueda,
+            getCategorias,
             cargando,
             error
         } = contextValue;
+
+
+        const handleBusquedaChange = (campo, valor) => {
+            actualizarBusqueda({ [campo]: valor });
+        };
+
+        const handleLimpiarFiltros = () => {
+            limpiarBusqueda();
+        };
 
         const Navegacion = () => (
             <div className="navegacion-container">
@@ -137,6 +152,58 @@ export function Productos({ agregarCarrito }) {
 
         return (
             <div className="productos-page">
+
+                <div className="search-section">
+                    <div className="search-header">
+                        <h6><i className="fas fa-search me-2"></i>Buscar y Filtrar Productos</h6>
+                        <button
+                            className="btn btn-outline-secondary btn-sm"
+                            onClick={handleLimpiarFiltros}
+                            title="Limpiar todos los filtros"
+                        >
+                            <i className="fas fa-eraser me-1"></i>
+                            Limpiar Filtros
+                        </button>
+                    </div>
+
+                    <div className="search-filters">
+                        <div className="row g-3">
+                            <div className="col-md-4">
+                                <label className="form-label">
+                                    <i className="fas fa-search me-1"></i>
+                                    Buscar por nombre o descripción
+                                </label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Escribir para buscar..."
+                                    value={busqueda.texto}
+                                    onChange={(e) => handleBusquedaChange('texto', e.target.value)}
+                                />
+                            </div>
+
+                            <div className="col-md-2">
+                                <label className="form-label">
+                                    <i className="fas fa-tags me-1"></i>
+                                    Categoría
+                                </label>
+                                <select
+                                    className="form-select"
+                                    value={busqueda.categoria}
+                                    onChange={(e) => handleBusquedaChange('categoria', e.target.value)}
+                                >
+                                    <option value="">Todas las categorías</option>
+                                    {getCategorias().map(categoria => (
+                                        <option key={categoria} value={categoria}>
+                                            {categoria}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <Navegacion />
 
                 <div className="products-container">

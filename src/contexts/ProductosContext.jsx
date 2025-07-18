@@ -12,6 +12,12 @@ export function ProductosProvider({ children }) {
     const [error, setError] = useState(null);
     const [apiPage, setApiPage] = useState(1);
 
+    const [busqueda, setBusqueda] = useState({
+        texto: '',
+        categoria: '',
+        precioMin: '',
+        precioMax: ''
+    });
 
     const [paginacion, setPaginacion] = useState({
         paginaActual: 1,
@@ -38,14 +44,12 @@ export function ProductosProvider({ children }) {
                     image: d.images?.webp?.large_image_url || ""
                 }));
 
-
                 const jsonProducts = getJsonDataProducts();
 
                 console.log("\n" + "=".repeat(80));
                 console.log(`🚀 INFORMACION DE JSON`);
                 console.log("📋 Cantidad Productos: ", jsonProducts.length);
                 console.log("=".repeat(80));
-
 
                 const mergedProducts = fusionUpdateProducts(jsonProducts, mappedProductosAPI);
 
@@ -56,14 +60,12 @@ export function ProductosProvider({ children }) {
                 console.log("📋 Cantidad Productos Fusion: ", mergedProducts.length);
                 console.log("=".repeat(80));
 
-
                 const finalProducts = getLocalStorageProducts(mergedProducts);
 
                 console.log("\n" + "=".repeat(80));
                 console.log("📝 PRODUCTOS EN LISTA FINAL");
                 console.log("📋 Cantidad Productos: ", finalProducts.length);
                 console.log("=".repeat(80));
-
 
                 finalProducts.sort((a, b) => b.id - a.id);
 
@@ -81,17 +83,62 @@ export function ProductosProvider({ children }) {
     }, [apiPage]);
 
 
+    const getProductosFiltrados = () => {
+        return productos.filter(producto => {
+            const coincideTexto = busqueda.texto === '' ||
+                producto.name.toLowerCase().includes(busqueda.texto.toLowerCase()) ||
+                producto.description.toLowerCase().includes(busqueda.texto.toLowerCase());
+
+            const coincideCategoria = busqueda.categoria === '' ||
+                producto.category.toLowerCase().includes(busqueda.categoria.toLowerCase());
+
+            const precioProducto = parseFloat(producto.price);
+            const coincidePrecioMin = busqueda.precioMin === '' ||
+                precioProducto >= parseFloat(busqueda.precioMin);
+
+            const coincidePrecioMax = busqueda.precioMax === '' ||
+                precioProducto <= parseFloat(busqueda.precioMax);
+
+            return coincideTexto && coincideCategoria && coincidePrecioMin && coincidePrecioMax;
+        });
+    };
+
+
     const getProductosPaginados = () => {
+        const productosFiltrados = getProductosFiltrados();
         const inicio = (paginacion.paginaActual - 1) * paginacion.productosPorPagina;
         const fin = inicio + paginacion.productosPorPagina;
-        return productos.slice(inicio, fin);
+        return productosFiltrados.slice(inicio, fin);
     };
 
 
     const getTotalPaginas = () => {
-        return Math.ceil(productos.length / paginacion.productosPorPagina);
+        const productosFiltrados = getProductosFiltrados();
+        return Math.ceil(productosFiltrados.length / paginacion.productosPorPagina);
     };
 
+
+    const getCategorias = () => {
+        const categorias = [...new Set(productos.map(p => p.category))];
+        return categorias.sort();
+    };
+
+
+    const actualizarBusqueda = (nuevosBusqueda) => {
+        setBusqueda(prev => ({ ...prev, ...nuevosBusqueda }));
+
+        setPaginacion(prev => ({ ...prev, paginaActual: 1 }));
+    };
+
+    const limpiarBusqueda = () => {
+        setBusqueda({
+            texto: '',
+            categoria: '',
+            precioMin: '',
+            precioMax: ''
+        });
+        setPaginacion(prev => ({ ...prev, paginaActual: 1 }));
+    };
 
     const productsNavigateNext = () => {
         const totalPaginas = getTotalPaginas();
@@ -108,7 +155,6 @@ export function ProductosProvider({ children }) {
         }));
     };
 
-
     const irAPagina = (numeroPagina) => {
         const totalPaginas = getTotalPaginas();
         if (numeroPagina >= 1 && numeroPagina <= totalPaginas) {
@@ -118,7 +164,6 @@ export function ProductosProvider({ children }) {
             }));
         }
     };
-
 
     const cambiarProductosPorPagina = (cantidad) => {
         setPaginacion(prev => ({
@@ -294,11 +339,10 @@ export function ProductosProvider({ children }) {
         localStorage.setItem("products", JSON.stringify(productosActualizados));
     };
 
-
-
     const productosPaginados = getProductosPaginados();
     const totalPaginas = getTotalPaginas();
-    const totalProductos = productos.length;
+    const totalProductos = getProductosFiltrados().length;
+    const totalProductosGeneral = productos.length;
 
     return (
         <ProductosContext.Provider value={{
@@ -318,8 +362,14 @@ export function ProductosProvider({ children }) {
             productosPorPagina: paginacion.productosPorPagina,
             totalPaginas,
             totalProductos,
+            totalProductosGeneral,
             apiPage,
-            setApiPage
+            setApiPage,
+            busqueda,
+            actualizarBusqueda,
+            limpiarBusqueda,
+            getCategorias,
+            getProductosFiltrados
         }}>
             {children}
         </ProductosContext.Provider>

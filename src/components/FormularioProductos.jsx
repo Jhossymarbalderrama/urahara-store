@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useProductosContext } from "../contexts/ProductosContext";
 import "../styles/formularioProductos.css";
 
-export function FormularioProducto() {
+export function FormularioProducto({ onClose, onProductAdded, editingProduct, modalMode }) {
     const [product, setProducto] = useState({
         name: '',
         category: '',
@@ -12,7 +12,30 @@ export function FormularioProducto() {
     });
     const [errores, setErrores] = useState({});
 
-    const { agregarProducto } = useProductosContext();
+    const { agregarProducto, modificarProducto } = useProductosContext();
+
+
+    useEffect(() => {
+        if (modalMode === 'edit' && editingProduct) {
+            setProducto({
+                name: editingProduct.name || '',
+                category: editingProduct.category || '',
+                price: editingProduct.price || '',
+                description: editingProduct.description || '',
+                image: editingProduct.image || ''
+            });
+        } else {
+
+            setProducto({
+                name: '',
+                category: '',
+                price: '',
+                description: '',
+                image: ''
+            });
+        }
+        setErrores({});
+    }, [modalMode, editingProduct]);
 
     const validarFormulario = () => {
         const nuevosErrores = {};
@@ -60,7 +83,7 @@ export function FormularioProducto() {
         e.preventDefault();
 
         if (validarFormulario()) {
-            const productoParaAgregar = {
+            const productoParaProcesar = {
                 name: product.name.trim(),
                 category: product.category.trim(),
                 price: parseFloat(product.price).toFixed(2),
@@ -68,7 +91,12 @@ export function FormularioProducto() {
                 image: product.image.trim() || "https://bitsofco.de/img/Qo5mfYDE5v-350.avif"
             };
 
-            agregarProducto(productoParaAgregar);
+            if (modalMode === 'edit' && editingProduct) {
+                modificarProducto(editingProduct.id, productoParaProcesar);
+            } else {
+                agregarProducto(productoParaProcesar);
+            }
+
 
             setProducto({
                 name: '',
@@ -78,16 +106,23 @@ export function FormularioProducto() {
                 image: ''
             });
             setErrores({});
+
+            if (onProductAdded) {
+                onProductAdded();
+            }
         }
     };
 
     return (
         <div className="formulario-container">
             <form onSubmit={handleSubmit} className="formulario-producto">
-                <h2 className="formulario-titulo">Agregar Producto</h2>
+                <h2 className="formulario-titulo">
+                    {modalMode === 'edit' ? 'Editar Producto' : 'Agregar Producto'}
+                </h2>
 
                 <div className="campo-container">
                     <label className="campo-label">Nombre:</label>
+                    {errores.name && <p className="error-message">{errores.name}</p>}
                     <input
                         type="text"
                         name="name"
@@ -96,11 +131,11 @@ export function FormularioProducto() {
                         className={`campo-input ${errores.name ? 'error' : ''}`}
                         placeholder="Nombre del manga"
                     />
-                    {errores.name && <p className="error-message">{errores.name}</p>}
                 </div>
 
                 <div className="campo-container">
                     <label className="campo-label">Categoría:</label>
+                    {errores.category && <p className="error-message">{errores.category}</p>}
                     <input
                         type="text"
                         name="category"
@@ -109,11 +144,11 @@ export function FormularioProducto() {
                         className={`campo-input ${errores.category ? 'error' : ''}`}
                         placeholder="Ej: Shonen, Seinen, etc."
                     />
-                    {errores.category && <p className="error-message">{errores.category}</p>}
                 </div>
 
                 <div className="campo-container">
                     <label className="campo-label">Precio:</label>
+                    {errores.price && <p className="error-message">{errores.price}</p>}
                     <input
                         type="number"
                         name="price"
@@ -124,38 +159,46 @@ export function FormularioProducto() {
                         className={`campo-input ${errores.price ? 'error' : ''}`}
                         placeholder="0.00"
                     />
-                    {errores.price && <p className="error-message">{errores.price}</p>}
                 </div>
 
                 <div className="campo-container">
                     <label className="campo-label">Descripción:</label>
+                    {errores.description && <p className="error-message">{errores.description}</p>}
                     <textarea
                         name="description"
                         value={product.description}
                         onChange={handleChange}
-                        rows="4"
+                        rows="6"
                         className={`campo-textarea ${errores.description ? 'error' : ''}`}
                         placeholder="Descripción del manga (mínimo 10 caracteres)"
                     />
-                    {errores.description && <p className="error-message">{errores.description}</p>}
                 </div>
 
                 <div className="campo-container">
                     <label className="campo-label">URL de la Imagen (opcional):</label>
+                    {errores.image && <p className="error-message">{errores.image}</p>}
                     <input
                         type="url"
                         name="image"
                         value={product.image}
                         onChange={handleChange}
                         className={`campo-input ${errores.image ? 'error' : ''}`}
-                        placeholder="https://ejemplo.com/imagen.jpg"
+                        placeholder="https://bitsofco.de/img/Qo5mfYDE5v-350.avif"
                     />
-                    {errores.image && <p className="error-message">{errores.image}</p>}
                 </div>
 
-                <button type="submit" className="btn-submit">
-                    Agregar Producto
-                </button>
+                <div className="button-container">
+                    <button type="submit" className="btn-submit">
+                        {modalMode === 'edit' ? 'Guardar Cambios' : 'Agregar Producto'}
+                    </button>
+                    <button
+                        type="button"
+                        className="btn-cancel"
+                        onClick={onClose}
+                    >
+                        Cancelar
+                    </button>
+                </div>
             </form>
         </div>
     );

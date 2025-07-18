@@ -10,7 +10,7 @@ export function Nav({ productsCarrito }) {
 
     function navigateHome() {
         navigate("/");
-        setIsMenuOpen(false); // Cerrar menú al navegar
+        setIsMenuOpen(false);
     }
 
     const toggleMenu = () => {

@@ -4,14 +4,15 @@ import { useProductosContext } from "../contexts/ProductosContext";
 import { FormularioProducto } from "./FormularioProductos";
 
 export function ProductCrud() {
-    const [editingProduct, setEditingProduct] = useState(null);
-    const [editForm, setEditForm] = useState({});
     const [showModal, setShowModal] = useState(false);
+    const [editingProduct, setEditingProduct] = useState(null);
+    const [modalMode, setModalMode] = useState('add'); // 'add' o 'edit'
 
     const contextValue = useProductosContext();
     const {
         productosPaginados,
         totalProductos,
+        totalProductosGeneral,
         productsNavigatePrev,
         productsNavigateNext,
         irAPagina,
@@ -20,29 +21,22 @@ export function ProductCrud() {
         cargando,
         error,
         eliminarProducto,
-        modificarProducto
+        busqueda,
+        actualizarBusqueda,
+        limpiarBusqueda,
+        getCategorias
     } = contextValue;
 
     const handleEdit = (producto) => {
-        setEditingProduct(producto.id);
-        setEditForm({
-            name: producto.name,
-            category: producto.category,
-            price: producto.price,
-            description: producto.description,
-            image: producto.image
-        });
+        setEditingProduct(producto);
+        setModalMode('edit');
+        setShowModal(true);
     };
 
-    const handleSave = (id) => {
-        modificarProducto(id, editForm);
+    const handleAddProduct = () => {
         setEditingProduct(null);
-        setEditForm({});
-    };
-
-    const handleCancel = () => {
-        setEditingProduct(null);
-        setEditForm({});
+        setModalMode('add');
+        setShowModal(true);
     };
 
     const handleDelete = (id) => {
@@ -51,14 +45,19 @@ export function ProductCrud() {
         }
     };
 
-    const handleEditChange = (e) => {
-        const { name, value } = e.target;
-        setEditForm(prev => ({
-            ...prev,
-            [name]: value
-        }));
+    const handleModalClose = () => {
+        setShowModal(false);
+        setEditingProduct(null);
+        setModalMode('add');
     };
 
+    const handleBusquedaChange = (campo, valor) => {
+        actualizarBusqueda({ [campo]: valor });
+    };
+
+    const handleLimpiarFiltros = () => {
+        limpiarBusqueda();
+    };
 
     const generarNumerosPagina = () => {
         const paginas = [];
@@ -141,14 +140,17 @@ export function ProductCrud() {
             <div className="crud-header">
                 <h5><i className="fas fa-boxes me-2"></i>Gestión de Productos</h5>
                 <div className="crud-stats">
-                    <span className="badge bg-warning text-dark mx-3" title="Cantidad total de Productos">
-                        Total: {totalProductos} productos
+                    <span className="badge bg-info text-white mx-2" title="Productos mostrados después de filtros">
+                        Mostrando: {totalProductos}
+                    </span>
+                    <span className="badge bg-warning text-dark mx-1" title="Total de productos disponibles">
+                        Total: {totalProductosGeneral} productos
                     </span>
 
                     <button
                         className="btn btn-success badge text-light"
                         title="Agregar Producto Nuevo"
-                        onClick={() => setShowModal(true)}
+                        onClick={handleAddProduct}
                     >
                         Agregar Producto
                         <i className="fas fa-plus ms-2"></i>
@@ -156,7 +158,60 @@ export function ProductCrud() {
                 </div>
             </div>
 
-            {/* Navegación superior */}
+
+
+            <div className="search-section">
+                <div className="search-header">
+                    <h6><i className="fas fa-search me-2"></i>Buscar y Filtrar Productos</h6>
+                    <button
+                        className="btn btn-outline-secondary btn-sm"
+                        onClick={handleLimpiarFiltros}
+                        title="Limpiar todos los filtros"
+                    >
+                        <i className="fas fa-eraser me-1"></i>
+                        Limpiar Filtros
+                    </button>
+                </div>
+
+                <div className="search-filters">
+                    <div className="row g-3">
+                        <div className="col-md-4">
+                            <label className="form-label">
+                                <i className="fas fa-search me-1"></i>
+                                Buscar por nombre o descripción
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Escribir para buscar..."
+                                value={busqueda.texto}
+                                onChange={(e) => handleBusquedaChange('texto', e.target.value)}
+                            />
+                        </div>
+
+                        <div className="col-md-2">
+                            <label className="form-label">
+                                <i className="fas fa-tags me-1"></i>
+                                Categoría
+                            </label>
+                            <select
+                                className="form-select"
+                                value={busqueda.categoria}
+                                onChange={(e) => handleBusquedaChange('categoria', e.target.value)}
+                            >
+                                <option value="">Todas las categorías</option>
+                                {getCategorias().map(categoria => (
+                                    <option key={categoria} value={categoria}>
+                                        {categoria}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <NavegacionCrud />
 
             <div className="table-responsive">
@@ -189,88 +244,36 @@ export function ProductCrud() {
                                 </td>
 
                                 <td className="name-cell">
-                                    {editingProduct === producto.id ? (
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={editForm.name}
-                                            onChange={handleEditChange}
-                                            className="form-control form-control-sm"
-                                        />
-                                    ) : (
-                                        <span className="product-name">{producto.name}</span>
-                                    )}
+                                    <span className="product-name">{producto.name}</span>
                                 </td>
 
                                 <td className="category-cell">
-                                    {editingProduct === producto.id ? (
-                                        <input
-                                            type="text"
-                                            name="category"
-                                            value={editForm.category}
-                                            onChange={handleEditChange}
-                                            className="form-control form-control-sm"
-                                        />
-                                    ) : (
-                                        <span className="badge category-badge">{producto.category}</span>
-                                    )}
+                                    <span className="badge category-badge">{producto.category}</span>
                                 </td>
 
                                 <td className="price-cell">
-                                    {editingProduct === producto.id ? (
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            value={editForm.price}
-                                            onChange={handleEditChange}
-                                            className="form-control form-control-sm"
-                                            step="0.01"
-                                        />
-                                    ) : (
-                                        <span className="price-tag">${producto.price}</span>
-                                    )}
+                                    <span className="price-tag">${producto.price}</span>
                                 </td>
 
                                 <td className="description-cell">
-                                    {editingProduct === producto.id ? (
-                                        <textarea
-                                            name="description"
-                                            value={editForm.description}
-                                            onChange={handleEditChange}
-                                            className="form-control form-control-sm"
-                                            rows="2"
-                                        />
-                                    ) : (
-                                        <span className="description-text" title={producto.description}>
-                                            {producto.description}
-                                        </span>
-                                    )}
+                                    <span className="description-text" title={producto.description}>
+                                        {producto.description}
+                                    </span>
                                 </td>
 
                                 <td className="actions-cell">
-                                    {editingProduct === producto.id ? (
-                                        <div className="edit-actions">
-                                            <button
-                                                className="btn btn-success btn-sm me-1"
-                                                onClick={() => handleSave(producto.id)}
-                                                title="Guardar"
-                                            >
-                                                <i className="fas fa-check"></i>
-                                            </button>
-                                            <button
-                                                className="btn btn-secondary btn-sm"
-                                                onClick={handleCancel}
-                                                title="Cancelar"
-                                            >
-                                                <i className="fas fa-times"></i>
-                                            </button>
-                                        </div>
-                                    ) : (
-                                        <div className="action-buttons">
-                                            <i title="Editar" className="fas fa-edit" onClick={() => handleEdit(producto)}></i>
-                                            <i onClick={() => handleDelete(producto.id)} title="Eliminar" className="fas fa-trash"></i>
-                                        </div>
-                                    )}
+                                    <div className="action-buttons">
+                                        <i
+                                            title="Editar"
+                                            className="fas fa-edit"
+                                            onClick={() => handleEdit(producto)}
+                                        ></i>
+                                        <i
+                                            onClick={() => handleDelete(producto.id)}
+                                            title="Eliminar"
+                                            className="fas fa-trash"
+                                        ></i>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
@@ -278,13 +281,26 @@ export function ProductCrud() {
                 </table>
             </div>
 
-            {totalProductos === 0 && (
+            {totalProductos === 0 && totalProductosGeneral > 0 ? (
+                <div className="empty-search-results">
+                    <i className="fas fa-search"></i>
+                    <h4>No se encontraron productos</h4>
+                    <p>No hay productos que coincidan con los criterios de búsqueda.</p>
+                    <button
+                        className="btn btn-outline-primary"
+                        onClick={handleLimpiarFiltros}
+                    >
+                        <i className="fas fa-eraser me-2"></i>
+                        Limpiar filtros y mostrar todos
+                    </button>
+                </div>
+            ) : totalProductos === 0 ? (
                 <div className="empty-state">
                     <i className="fas fa-box-open"></i>
                     <h4>No hay productos disponibles</h4>
                     <p>Agrega algunos productos para comenzar a gestionarlos.</p>
                 </div>
-            )}
+            ) : null}
 
             {totalPaginas > 1 && <NavegacionCrud />}
 
@@ -295,19 +311,21 @@ export function ProductCrud() {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">
-                                    <i className="fas fa-plus me-2"></i>
-                                    Agregar Nuevo Producto
+                                    <i className={`fas ${modalMode === 'edit' ? 'fa-edit' : 'fa-plus'} me-2`}></i>
+                                    {modalMode === 'edit' ? 'Editar Producto' : 'Agregar Nuevo Producto'}
                                 </h5>
                                 <button
                                     type="button"
                                     className="btn-close"
-                                    onClick={() => setShowModal(false)}
+                                    onClick={handleModalClose}
                                 ></button>
                             </div>
                             <div className="modal-body">
                                 <FormularioProducto
-                                    onClose={() => setShowModal(false)}
-                                    onProductAdded={() => setShowModal(false)}
+                                    onClose={handleModalClose}
+                                    onProductAdded={handleModalClose}
+                                    editingProduct={editingProduct}
+                                    modalMode={modalMode}
                                 />
                             </div>
                         </div>
@@ -318,7 +336,7 @@ export function ProductCrud() {
             {showModal && (
                 <div
                     className="modal-backdrop fade show"
-                    onClick={() => setShowModal(false)}
+                    onClick={handleModalClose}
                 ></div>
             )}
         </div>
